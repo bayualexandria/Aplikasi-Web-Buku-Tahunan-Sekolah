@@ -1,0 +1,123 @@
+        /*======================================
+        //--//-->   Sizing Tablet and Handphone
+        ======================================*/
+        @media(max-width:980px) {
+
+
+        	/* Navbar */
+        	.nav-item {
+
+        		font-size: 3rem;
+        		padding-top: 5px;
+        	}
+
+        	.navbar-toggler-icon {
+        		width: 5rem;
+        		height: 5rem;
+        	}
+
+        	.nama-logo {
+        		padding-left: 6rem;
+        		margin-top: -1rem;
+        	}
+
+        	.navbar img {
+        		width: 5rem;
+        		margin-top: -0.5rem;
+        		position: absolute;
+        	}
+
+        	.navbar .dropdown-menu {
+        		background: none;
+        		font-size: 3rem;
+        	}
+
+        	.navbar .dropdown-item {
+        		color: silver;
+        	}
+
+        	.navbar .dropdown-divider {
+        		width: 15rem;
+        		margin-left: 1rem;
+        	}
+
+        	a .btn {
+        		font-size: large;
+        	}
+
+        	/* Jumbotron */
+        	.jumbotron {
+        		min-height: 1450px;
+        		background-position-y: 4rem;
+        		margin-top: 2rem;
+        	}
+
+        	.jumbotron img {
+        		margin-top: 10rem;
+        		width: 35rem;
+        	}
+
+        	.jumbotron h5 {
+        		font-size: 4rem;
+        		text-shadow: 1px 1px 10px rgba(1, 1, 1, 1);
+        		font-weight: 200;
+        	}
+
+        	.jumbotron h1 {
+        		font-size: 8rem;
+        	}
+
+        	/* Panel */
+        	.tempicon {
+        		min-height: 80rem;
+        		background-color: aqua;
+
+        	}
+
+        	.tempicon .efek {
+        		height: 80rem;
+        	}
+
+        	.tempicon img {
+        		width: 13rem;
+        	}
+
+        	.tempicon .row {
+        		display: inline-block;
+        		padding-left: 15rem;
+        		margin-top: -12rem;
+        		text-align: center;
+        	}
+
+        	.card1 img {
+        		padding: 50px;
+        		border: 5px solid white;
+        		background-color: white;
+        		transition: .2s;
+        	}
+
+        	.card1 .text-s img:hover {
+        		background-color: aqua;
+        		padding: 10px;
+        		border: 15px solid white;
+        	}
+
+        	.tempicon p {
+        		padding-left: 4rem;
+        	}
+
+        	.tempicon #watch {
+        		padding-left: 2.5rem;
+        		padding-top: 6px;
+        	}
+
+        	.tempicon .text-s {
+        		color: silver;
+        		align-items: center;
+        		padding-top: -10rem;
+        		text-align: center;
+        		font-size: 2rem;
+        		margin-top: -4rem;
+        		position: relative;
+        	}
+        }
