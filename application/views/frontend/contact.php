@@ -22,6 +22,7 @@
                 </div>
                 <div class="col-md-7">
                     <div class="keep-touch--white">
+                        <div class="success" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
                         <form action="<?= base_url('website/pesan') ?>" method="POST">
                             <?php if ($user) : ?>
                                 <input type="text" placeholder="Masukan nama" name="name" value="<?= $user['name']; ?>" readonly>

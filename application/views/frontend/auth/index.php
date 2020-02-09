@@ -5,7 +5,9 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <h3 class="card-title text-center mb-5" style="font-weight: 500;color:black;"><?= $title; ?></h3>
-                        <?= $this->session->flashdata('message'); ?>
+                        <!-- <?= $this->session->flashdata('message'); ?> -->
+                        <div class="error" data-flashdata="<?= $this->session->flashdata('error'); ?>"></div>
+                        <div class="success" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
                         <form method="POST" action="<?= base_url('Auth'); ?>">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Alamat Email</label>

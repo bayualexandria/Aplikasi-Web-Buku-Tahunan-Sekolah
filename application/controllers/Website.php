@@ -7,15 +7,9 @@ class Website extends CI_Controller
         $data['title'] = 'Halaman Utama';
         $data['name'] = 'CV Azharku Media';
 
-        $this->form_validation->set_rules('name', 'Nama Lengkap', 'required|trim', []);
-        $this->form_validation->set_rules('email', 'Nama Lengkap', 'required|trim');
-        $this->form_validation->set_rules('mess', 'Nama Lengkap', 'required|trim');
-
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('template/website/header', $data);
-            $this->load->view('frontend/index');
-            $this->load->view('template/website/footer');
-        }
+        $this->load->view('template/website/header', $data);
+        $this->load->view('frontend/index');
+        $this->load->view('template/website/footer');
     }
 
     public function portfolio()
@@ -47,7 +41,7 @@ class Website extends CI_Controller
         $data['description'] = 'Halaman Contact Azharku Media';
 
         $this->load->view('template/website/header', $data);
-        $this->load->view('frontend/contact');
+        $this->load->view('frontend/contact', $data);
         $this->load->view('template/website/footer');
     }
 
@@ -72,6 +66,7 @@ class Website extends CI_Controller
         $this->db->insert('message', $data);
 
         $this->_sendEmail();
+        $this->session->set_flashdata('success', 'Pesan berhasil terkirim');
         redirect('website/contact');
     }
 
@@ -93,7 +88,7 @@ class Website extends CI_Controller
         $this->email->from($this->input->post('email'));
         $this->email->to('wardanabayu455@gmail.com', 'Administrator');
         $this->email->subject('Message User');
-        $this->email->message('Nama : ' . $this->input->post('name') . '<br>Email : ' . $this->input->post('email') .'<p style="text-align:justify;">Pesan : ' . $this->input->post('mess') . '</p>');
+        $this->email->message('Nama : ' . $this->input->post('name') . '<br>Email : ' . $this->input->post('email') . '<p style="text-align:justify;">Pesan : ' . $this->input->post('mess') . '</p>');
 
         if ($this->email->send()) {
             return true;

@@ -53,22 +53,22 @@ class Auth extends CI_Controller
                             'role_id' => $user['role_id']
                         ];
                         $this->session->set_userdata($data);
-                        $this->session->set_flashdata('auth', 'Selamat Anda Berhasil Login Di Website Kami');
+                        $this->session->set_flashdata('login', 'Selamat Anda Berhasil Login Di Website Kami');
                         redirect('Pemesanan');
                     } else {
-                        $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Anda Tidak Punya Hak Akses Ke Pelanggan</div>');
+                        $this->session->set_flashdata('error', 'Anda Tidak Punya Hak Akses Ke Pelanggan');
                         redirect('Auth');
                     }
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Password Salah!</div>');
+                    $this->session->set_flashdata('error', 'Password Salah!');
                     redirect('Auth');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Email Ini Belum Diaktifasi!</div>');
+                $this->session->set_flashdata('error', 'Email Ini Belum Diaktifasi!');
                 redirect('Auth');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Email Belum Terdaftar!</div>');
+            $this->session->set_flashdata('error', 'Email Belum Terdaftar!');
             redirect('Auth');
         }
     }
@@ -141,7 +141,7 @@ class Auth extends CI_Controller
             $this->db->insert('pelanggan', $data);
             $this->db->insert('users_token', $user_token);
             $this->_sendEmail($token, 'verify');
-            $this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Selamat! Anda Berhasil Membuat Akun. Mohon Untuk Aktifasi Akun Anda Pada Pesan Yang Terkirim Ke Email Anda.</div>');
+            $this->session->set_flashdata('success', 'Selamat! Anda Berhasil Membuat Akun. Mohon Untuk Aktifasi Akun Anda Pada Pesan Yang Terkirim Ke Email Anda.');
             redirect('Auth');
         }
     }
@@ -211,14 +211,14 @@ class Auth extends CI_Controller
                     ];
                     $this->db->insert('users_token', $user_token);
                     $this->_sendEmail($token, 'forgot');
-                    $this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Mohon Cek Email Untuk Me-Reset Password!</div>');
+                    $this->session->set_flashdata('success', 'Mohon Cek Email Untuk Me-Reset Password!');
                     redirect('Auth/forgot');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Email Ditolak! Email Sudah Terdaftar Di Akses Lain.</div>');
+                    $this->session->set_flashdata('error', 'Email Ditolak! Email Sudah Terdaftar Di Akses Lain.');
                     redirect('Auth/forgot');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Email Belum Terdaftar Atau Belum Teraktifasi!</div>');
+                $this->session->set_flashdata('error', 'Email Belum Terdaftar Atau Belum Teraktifasi!');
                 redirect('Auth/forgot');
             }
         }
@@ -239,15 +239,15 @@ class Auth extends CI_Controller
                     $this->change();
                 } else {
                     $this->db->delete('users_token', ['email' => $email]);
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Reset Password Gagal! Token Kadaluarsa</div>');
+                    $this->session->set_flashdata('error', 'Reset Password Gagal! Token Kadaluarsa');
                     redirect('Auth');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Reset Password Gagal! Token Salah.</div>');
+                $this->session->set_flashdata('error', 'Reset Password Gagal! Token Salah.');
                 redirect('Auth');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Reset Password Gagal! Email Salah.</div>');
+            $this->session->set_flashdata('error', 'Reset Password Gagal! Email Salah.');
             redirect('Auth');
         }
     }
@@ -310,22 +310,22 @@ class Auth extends CI_Controller
 
                     $this->db->delete('users_token', ['email' => $email]);
 
-                    $this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">' . $email . ' Telah Di Aktifasi! Silahkan Login</div>');
+                    $this->session->set_flashdata('success', '' . $email . ' Telah Di Aktifasi! Silahkan Login');
                     redirect('Auth');
                 } else {
 
                     $this->db->delete('pelanggan', ['email_pelanggan' => $email,]);
                     $this->db->delete('tbl_pemesanan', ['email' => $email]);
                     $this->db->delete('users_token', ['email' => $email]);
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Aktifasi Akun Gagal! Token Kadaluarsa, Daftar Kembali.</div>');
+                    $this->session->set_flashdata('error', 'Aktifasi Akun Gagal! Token Kadaluarsa, Daftar Kembali.');
                     redirect('Auth');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Aktifasi Akun Gagal! Token Salah</div>');
+                $this->session->set_flashdata('error', 'Aktifasi Akun Gagal! Token Salah');
                 redirect('Auth');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">Aktifasi Akun Gagal! Email Salah</div>');
+            $this->session->set_flashdata('error', 'Aktifasi Akun Gagal! Email Salah.');
             redirect('Auth');
         }
     }
@@ -334,7 +334,7 @@ class Auth extends CI_Controller
     {
         $this->session->unset_userdata('email_pelanggan');
         $this->session->unset_userdata('role_id');
-        $this->session->set_flashdata('auth', 'Anda Sudah Logout Dari Sistem');
+        $this->session->set_flashdata('success', 'Anda Sudah Logout Dari Sistem');
         redirect('Website');
     }
 }

@@ -37,6 +37,8 @@
 <script src="<?= base_url() ?>assets/web/js/vendor/isotope.pkgd.min.js"></script>
 <script src="<?= base_url() ?>assets/web/js/vendor/odometer.min.js"></script>
 <script src="<?= base_url() ?>assets/web/js/main.js"></script>
+<script src="<?= base_url() ?>assets/vendors/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script src="<?= base_url() ?>assets/vendors/sweetalert/js/script.js"></script>
 <script>
     $('.custom-file-input').on('change', function() {
         let fileName = $(this).val().split('\\').pop();
