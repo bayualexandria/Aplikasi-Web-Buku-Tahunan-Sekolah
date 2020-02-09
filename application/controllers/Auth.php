@@ -335,6 +335,6 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('email_pelanggan');
         $this->session->unset_userdata('role_id');
         $this->session->set_flashdata('success', 'Anda Sudah Logout Dari Sistem');
-        redirect('Website');
+        redirect('Auth');
     }
 }

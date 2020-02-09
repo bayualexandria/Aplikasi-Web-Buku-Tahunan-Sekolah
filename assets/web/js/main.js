@@ -8,8 +8,8 @@ jQuery(document).ready(function ($) {
 			itemSelector: '.recent-works--items__item',
 			layoutMode: 'fitRows'
 		});
-		$('.navbarmenu').click(function () {
-			$('.navbarmenu').removeClass('active');
+		$('.recent-works--nav ul li').click(function () {
+			$('.recent-works--nav ul li').removeClass('active');
 			$(this).addClass('active');
 
 			var selector = $(this).attr('data-filter');
@@ -159,7 +159,7 @@ jQuery(document).ready(function ($) {
 	});
 });
 
-// $('.navbarmenu').on('click', function () {
-// 	$('.navbarmenu').removeClass('active');
-// 	// $(this).addClass('active');
-// });
+$('.navbarmenu').on('click', function () {
+	$('.navbarmenu').removeClass('active');
+	$(this).addClass('active');
+});

@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-1"></div>
         <div class="col-md">
-
+        <div class="login" data-flashdata="<?= $this->session->flashdata('login'); ?>"></div>
             <nav style="font-weight: 800;">
                 <div class="nav nav-tabs " id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="nav-dashboard-tab" data-toggle="tab" href="#nav-dashboard" role="tab" aria-controls="nav-dashboard" aria-selected="false"> <i class="ti-direction menu-icon"></i> Dashboard</a>

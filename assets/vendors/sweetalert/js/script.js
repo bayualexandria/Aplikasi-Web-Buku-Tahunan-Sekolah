@@ -3,7 +3,7 @@ const success = $('.success').data('flashdata');
 if (success) {
 	Swal.fire({
 		icon: 'success',
-		title: 'Selamat' ,
+		title: 'Selamat',
 		text: success
 	});
 }
@@ -17,6 +17,17 @@ if (error) {
 	});
 }
 
-
-
-
+const login = $('.login').data('flashdata');
+if (login) {
+	Swal.fire({	
+		title: 'CV Azharku Media',
+		text: login,
+		imageUrl: 'http://localhost/ta/assets/images/profile/azhar.png',
+		imageHeight: 150,
+		imageAlt: 'A tall image',
+		showCloseButton: true,
+		showConfirmButton: false,
+		width:1000,
+		height:1000,
+	});
+}

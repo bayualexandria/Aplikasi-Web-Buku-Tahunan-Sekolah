@@ -37,7 +37,7 @@
         format: '(,ddd)',
     };
 </script>
-<script src="<?= base_url();?>assets/bootstrap-4/js/jquery-3.4.1.min.js"></script>
+<!-- <script src="<?= base_url();?>assets/bootstrap-4/js/jquery-3.4.1.min.js"></script> -->
 <script src="<?= base_url() ?>assets/web/js/vendor/jquery-3.1.0.min.js"></script>
 <script src="<?= base_url() ?>assets/web/js/vendor/jquery.easing.min.js"></script>
 <script src="<?= base_url() ?>assets/web/js/vendor/tether.js"></script>

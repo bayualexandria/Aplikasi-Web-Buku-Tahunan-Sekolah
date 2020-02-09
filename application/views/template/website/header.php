@@ -23,11 +23,11 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li ><a href="<?= base_url('website') ?>" class="navbarmenu active">Home</a></li>
-                    <li><a href="<?= base_url('website/portfolio') ?>" class="navbarmenu">Portfolio</a></li>
+                    <li><a href="<?= base_url('website'); ?>" class="navbarmenu active">Home</a></li>
+                    <li><a href="<?= base_url('website/portfolio'); ?>" class="navbarmenu">Portfolio</a></li>
                     <!-- <li><a href="about.html">About Us</a></li> -->
-                    <li><a href="<?= base_url('website/blog') ?>" class="navbarmenu">Desain Buku Tahunan</a></li>
-                    <li><a href="<?= base_url('website/contact') ?>" class="navbarmenu">Contact</a></li>
+                    <li><a href="<?= base_url('website/blog'); ?>" class="navbarmenu">Desain Buku Tahunan</a></li>
+                    <li><a href="<?= base_url('website/contact'); ?>" class="navbarmenu">Contact</a></li>
                     <?php if ($user) : ?>
                         <li><a href="<?= base_url('pemesanan'); ?>" class="navbarmenu">My Dashboard</a></li>
                     <?php endif; ?>
