@@ -26,7 +26,7 @@
                     <h3 class="card-title">Order Pemesanan</h3>
                     <div class="row mt-5">
                         <div class="col-md-6 text-center">
-                            <img src="<?= base_url('assets/images/profile/' . $user['images']); ?>" class="img-thumbnail w-75" style="border-radius: 5%;" alt="">
+                            <img src="<?= base_url('assets/images/buku-tahunan-sekolah.jpg'); ?>" class="img-thumbnail w-75" style="border-radius: 5%;height:200px;width:auto" alt="">
                             <div class="mt-2">
                                 <h6 style="font-weight: 900;">Rp <?= $produck['harga']; ?>-, /<?= $produck['halaman']; ?></h6>
                                 <h6 style="font-weight: 900;" class="text-info">Bonus : <?= $produck['bonus']; ?></h6>

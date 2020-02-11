@@ -35,7 +35,15 @@ class Pemesanan extends CI_Controller
     }
     public function insertPemesanan()
     {
-        $data['pemesanan'] = $this->Pemesanan_model->insertPemesanan();
-        var_dump($data);
+        $this->Pemesanan_model->insertPemesanan();
+        $this->session->set_flashdata('success', 'Terima kasih! Orderan anda telah diterima.');
+        redirect('Pemesanan');
+    }
+
+    public function list()
+    {
+        $data['user'] = $this->db->get_where('pelanggan', ['email_pelanggan' => $this->session->userdata('email_pelanggan')])->row_array();
+        $data['title'] = 'Order';
+        $data['description'] = 'Halaman Order Buku Tahunan Sekolah';
     }
 }

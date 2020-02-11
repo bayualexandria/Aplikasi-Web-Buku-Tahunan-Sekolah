@@ -21,8 +21,8 @@
         </div>
         <div class="col-md-1"></div>
         <div class="col-md">
-        <div class="login" data-flashdata="<?= $this->session->flashdata('login'); ?>"></div>
-        <div class="success" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
+            <div class="login" data-flashdata="<?= $this->session->flashdata('login'); ?>"></div>
+            <div class="success" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
             <nav style="font-weight: 800;">
                 <div class="nav nav-tabs " id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="nav-dashboard-tab" data-toggle="tab" href="#nav-dashboard" role="tab" aria-controls="nav-dashboard" aria-selected="false"> <i class="ti-direction menu-icon"></i> Dashboard</a>
@@ -48,7 +48,9 @@
                                                         <li><?= $p['ukuran']; ?></li>
                                                         <li><?= $p['bahan_kertas']; ?></li>
 
-                                                        <li><h5>BONUS</h5></li>
+                                                        <li>
+                                                            <h5>BONUS</h5>
+                                                        </li>
                                                         <li><?= $p['bonus']; ?></li>
                                                     </ul>
                                                     <a href="<?= base_url('pemesanan/order/' . $p['id']) ?>" class="button small">Choose Order</a>
@@ -61,34 +63,22 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                        <div class="container mt-5">
-                            <div class="row justify-content-center">
-                                <div class="col-md-10">
-                                    <form method="POST" action="http://localhost/ta/admin/User/ubahpassword">
-                                        <div class="form-group row">
-                                            <!-- <label for="password" class="col-sm-2 col-form-label">Password</label> -->
-                                            <div class="col-sm-10">
-                                                <input id="password" class="form-control" type="hidden" name="password" value="$2y$10$btkaQ673w5pVjsrwEblkmuGHP.VCbPZnfVuQy71VXwJiC6HOjfrpK" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="passwordbaru" class="col-sm-2 col-form-label">Password Baru</label>
-                                            <div class="col-sm-10">
-                                                <input id="passwordbaru" class="form-control" type="password" name="passwordbaru">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="konfpasswordbaru" class="col-sm-2 col-form-label">Konfirmasi Password Baru</label>
-                                            <div class="col-sm-10">
-                                                <input id="konfpasswordbaru" class="form-control" type="password" name="konfpasswordbaru">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row justify-content-end">
-                                            <div class="col-sm-10">
-                                                <button type="submit" class="btn btn-primary btn-sm">Change Password</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md my-5 mx-5">
+                                    <?php $id = $user['id'];
+                                    $query = "SELECT `tbl_pemesanan`.*,`tbl_katalog`.*,`tbl_bahan`.*,`pelanggan`.* FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id`  JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` JOIN `tbl_bahan` ON `tbl_pemesanan`.`id_bahan`=`tbl_bahan`.`id` WHERE `tbl_pemesanan`.`id_pelanggan`=$id";
+                                    $orderList = $this->db->query($query)->result_array(); ?>
+
+                                    <ul class="list-group">
+                                        <?php foreach ($orderList as $ol) : ?>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <?= $ol['jenis_katalog']; ?> ( <?= date('d-M-Y',$ol['date_created']); ?>)
+                                                <span class="badge badge-primary badge-pill">14</span>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+
                                 </div>
                             </div>
                         </div>

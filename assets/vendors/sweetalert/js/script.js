@@ -58,3 +58,6 @@ $("#jumlah, #harga").keyup(function () {
 	const total = parseInt(harga) * parseInt(jumlah);
 	$("#total").val(total);
 });
+
+
+
