@@ -4,16 +4,16 @@
             <div class="text-center mt-5">
                 <img src="<?= base_url('assets/images/profile/' . $user['images']); ?>" alt="profile" style="width: 50%;border-radius:50%;border:2px solid silver;">
             </div>
-            <div class="text-upercase mt-3 text-center" style="font-weight:800;text-shadow:1px 1px 1px 1px black;color:black; font-size:1.3rem;">
+            <div class="text-upercase mt-3 text-center" style="font-weight:800;font-size:1.3rem;">
                 <?= $user['name']; ?>
             </div>
-            <div class="text-muted text-center" style="font-weight:800;text-shadow:1px 1px 1px 1px black;color:black; font-size:0.9rem;">
+            <div class="text-muted text-center" style="font-weight:800;font-size:0.9rem;">
                 <?= $user['email_pelanggan']; ?>
             </div>
             <a href="<?= base_url('profile') ?>" class="btn btn-primary btn-block mt-5">Edit Profile</a>
             <div class="mt-3">
                 <div class="container">
-                    <div class="text-justify" style="text-shadow:1px 1px 1px 1px black;font-weight:600;">
+                    <div class="text-justify" style="font-weight:600;">
                         <?= $user['alamat']; ?>
                     </div>
                 </div>

@@ -26,14 +26,16 @@ class Pemesanan extends CI_Controller
         $data['user'] = $this->db->get_where('pelanggan', ['email_pelanggan' => $this->session->userdata('email_pelanggan')])->row_array();
         $data['title'] = 'Order';
         $data['description'] = 'Halaman Order Buku Tahunan Sekolah';
-        $data['produck'] = $this->Pemesanan_model->produck($id);
+        $data['produck'] = $this->Pemesanan_model->bahan($id);
 
-        if ($this->form_validation->run() == false) {
-            $this->load->view('frontend/auth/template/header', $data);
-            $this->load->view('frontend/pemesanan/order');
-            $this->load->view('frontend/auth/template/footer');
-        }else {
-            
-        }
+
+        $this->load->view('frontend/auth/template/header', $data);
+        $this->load->view('frontend/pemesanan/order', $data);
+        $this->load->view('frontend/auth/template/footer');
+    }
+    public function insertPemesanan()
+    {
+        $data['pemesanan'] = $this->Pemesanan_model->insertPemesanan();
+        var_dump($data);
     }
 }

@@ -4,16 +4,16 @@
             <div class="text-center mt-5">
                 <img src="<?= base_url('assets/images/profile/' . $user['images']); ?>" alt="profile" style="width: 50%;border-radius:50%;border:2px solid silver;">
             </div>
-            <div class="text-upercase mt-3 text-center" style="font-weight:800;text-shadow:1px 1px 1px 1px black;color:black; font-size:1.3rem;">
+            <div class="text-upercase mt-3 text-center" style="font-weight:800;color:black; font-size:1.3rem;">
                 <?= $user['name']; ?>
             </div>
-            <div class="text-muted text-center" style="font-weight:800;text-shadow:1px 1px 1px 1px black;color:black; font-size:0.9rem;">
+            <div class="text-muted text-center" style="font-weight:800;color:black; font-size:0.9rem;">
                 <?= $user['email_pelanggan']; ?>
             </div>
             <a href="<?= base_url('profile') ?>" class="btn btn-primary btn-block mt-5">Edit Profile</a>
             <div class="mt-3">
                 <div class="container">
-                    <div class="text-justify" style="text-shadow:1px 1px 1px 1px black;font-weight:600;">
+                    <div class="text-justify" style="font-weight:600;">
                         <?= $user['alamat']; ?>
                     </div>
                 </div>
@@ -52,24 +52,29 @@
                                 <li class="list-group-item">
                                     <h6>Dok. File : <?= $produck['dokFile']; ?></h6>
                                 </li>
-                                <li class="list-group-item">
-                                    <form method="POST">
+                                <form method="POST" action="<?= base_url('Pemesanan/insertPemesanan'); ?>">
+                                    <li class="list-group-item">
                                         <input type="hidden" name="nama_pelanggan" value="<?= $user['name']; ?>">
                                         <input type="hidden" name="id_pelanggan" value="<?= $user['id']; ?>">
-                                        <input type="hidden" name="id_produck" value="<?= $produck['id']; ?>">
+                                        <input type="hidden" name="id_bahan" value="<?= $produck['id']; ?>">
+                                        <input type="hidden" name="id_katalog" value="<?= $produck['id_katalog']; ?>">
+                                        <input type="hidden" name="harga" value="<?= $produck['harga']; ?>" id="harga">
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <input class="form-control" name="jumlah_katalog" type="number" min="1" max="9" step="1" value="1">
+                                                    <input class="form-control" name="jumlah_katalog" type="number" min="1" max="12" step="1" value="1" id="jumlah" >
+                                                </div>
+                                                <h6 style="margin-right: -15px; margin-top:8px;">Rp </h6>
+                                                <div class="col-md">
+                                                    <input type="text text-muted" style="font-weight:800;color:silver; font-size:1.3rem;" class="form-control-plaintext position-absolute" id="total" readonly>
                                                 </div>
                                             </div>
 
-                                            <input type="hidden" name="total" value="<?= $produck['id']; ?>">
                                         </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <button type="submit" class="btn btn-info btn-block" data-toggle="modal" data-target="#exampleModal">Order Now</button>
-                                </li>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <button type="submit" class="btn btn-info btn-block">Order Now</button>
+                                    </li>
                                 </form>
                             </ul>
                         </div>

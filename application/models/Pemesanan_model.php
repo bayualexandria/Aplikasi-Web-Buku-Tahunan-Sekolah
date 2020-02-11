@@ -30,9 +30,36 @@ class Pemesanan_model extends  CI_Model
         return $this->db->query($query)->result_array();
     }
 
-    public function produck($id)
+    public function bahan($id)
     {
-
         return $this->db->get_where('tbl_bahan', ['id' => $id])->row_array();
+    }
+    public function katalog($id)
+    {
+        return $this->db->get_where('tbl_katalog', ['id' => $id])->row_array();
+    }
+
+    public function insertPemesanan()
+    {
+        $jumlah = $this->input->post('jumlah_katalog');
+        $harga = $this->input->post('harga');
+        $data = [
+            'nama_pelanggan' => $this->input->post('nama_pelanggan'),
+            'id_pelanggan' => $this->input->post('id_pelanggan'),
+            'id_katalog' => $this->input->post('id_katalog'),
+            'id_bahan' => $this->input->post('id_bahan'),
+            'jumlah_katalog' => $jumlah,
+            'id_status' => 4,
+            'date_created' => time()
+        ];
+        $data['total'] = $jumlah * $harga;
+
+        $this->db->insert('tbl_pemesanan', $data);
+        redirect('pemesanan/detail');
+    }
+
+    public function detail()
+    {
+        
     }
 }

@@ -29,7 +29,7 @@
         format: '(,ddd)',
     };
 </script>
-<script src="<?= base_url() ?>assets/bootstrap-4/js/jquery-3.4.1.js"></script>
+<script src="<?= base_url() ?>assets/bootstrap-4/js/jquery-3.4.1.min.js"></script>
 <script src="<?= base_url() ?>assets/web/js/vendor/jquery-3.1.0.min.js"></script>
 <script src="<?= base_url() ?>assets/web/js/vendor/jquery.easing.min.js"></script>
 <script src="<?= base_url() ?>assets/web/js/vendor/tether.js"></script>
@@ -41,9 +41,11 @@
 <script src="<?= base_url() ?>assets/vendors/sweetalert/dist/sweetalert2.all.min.js"></script>
 <script src="<?= base_url() ?>assets/vendors/sweetalert/js/script.js"></script>
 <script>
-    $('.custom-file-input').on('change', function() {
-        let fileName = $(this).val().split('\\').pop();
-        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    $(document).ready(function() {
+        $('.custom-file-input').on('change', function() {
+            let fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
     });
 </script>
 </body>

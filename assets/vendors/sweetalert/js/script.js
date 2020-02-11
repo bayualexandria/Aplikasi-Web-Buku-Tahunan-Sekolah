@@ -51,3 +51,10 @@ if (login) {
 	});
 }
 
+$("#jumlah, #harga").keyup(function () {
+	const harga = $("#harga").val();
+	const jumlah = $("#jumlah").val();
+
+	const total = parseInt(harga) * parseInt(jumlah);
+	$("#total").val(total);
+});
