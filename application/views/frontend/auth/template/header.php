@@ -32,7 +32,7 @@
                     <?php endif; ?>
                     <li style="margin-top:-4px">
                         <?php if ($user) : ?>
-                            <a href="<?= base_url('Auth/logout'); ?>" class="badge badge-primary badge-pill">Logout</a>
+                            <a href="<?= base_url('Auth/logout'); ?>" id="log-out" class="badge badge-primary badge-pill ">Logout</a>
                         <?php else : ?>
                             <a href="<?= base_url('Auth'); ?>" class="badge badge-primary badge-pill">Login</a>
                         <?php endif; ?>

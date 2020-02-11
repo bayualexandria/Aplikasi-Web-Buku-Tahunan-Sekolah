@@ -22,6 +22,7 @@
         <div class="col-md-1"></div>
         <div class="col-md">
         <div class="login" data-flashdata="<?= $this->session->flashdata('login'); ?>"></div>
+        <div class="success" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
             <nav style="font-weight: 800;">
                 <div class="nav nav-tabs " id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="nav-dashboard-tab" data-toggle="tab" href="#nav-dashboard" role="tab" aria-controls="nav-dashboard" aria-selected="false"> <i class="ti-direction menu-icon"></i> Dashboard</a>
@@ -37,17 +38,18 @@
                                 <div class="row text-center">
                                     <?php foreach ($producks as $p) : ?>
                                         <div class="col-md-4">
-                                            <div class="our-pricing--package <?= $p['bg_produck']; ?>">
-                                                <h3>Price</h3>
+                                            <div class="our-pricing--package <?= $p['bg']; ?>">
+                                                <h3 class="text-uppercase d-block"><?= $p['jenis_katalog']; ?></h3>
                                                 <div class="our-pricing--package__data">
                                                     <span>
-                                                        <p class="pt-5" style="font-size: 2rem;">Rp<?= $p['price']; ?></p><?= $p['pages']; ?> pages
+                                                        <p class="pt-5" style="font-size: 2rem;">Rp<?= $p['harga']; ?></p><?= $p['halaman']; ?>
                                                     </span>
                                                     <ul>
                                                         <li><?= $p['ukuran']; ?></li>
-                                                        <li><?= $p['cetak']; ?></li>
-                                                        <li><?= $p['bahan']; ?></li>
-                                                        <li><?= $p['cover']; ?></li>
+                                                        <li><?= $p['bahan_kertas']; ?></li>
+
+                                                        <li><h5>BONUS</h5></li>
+                                                        <li><?= $p['bonus']; ?></li>
                                                     </ul>
                                                     <a href="<?= base_url('pemesanan/order/' . $p['id']) ?>" class="button small">Choose Order</a>
                                                 </div>

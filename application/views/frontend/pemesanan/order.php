@@ -28,22 +28,29 @@
                         <div class="col-md-6 text-center">
                             <img src="<?= base_url('assets/images/profile/' . $user['images']); ?>" class="img-thumbnail w-75" style="border-radius: 5%;" alt="">
                             <div class="mt-2">
-                                <h6 style="font-weight: 900;">Rp <?= $produck['price']; ?>-, /<?= $produck['pages']; ?> Pages</h6>
+                                <h6 style="font-weight: 900;">Rp <?= $produck['harga']; ?>-, /<?= $produck['halaman']; ?></h6>
+                                <h6 style="font-weight: 900;" class="text-info">Bonus : <?= $produck['bonus']; ?></h6>
                             </div>
                         </div>
                         <div class="col-md-6  border-left">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <h5><?= $produck['ukuran']; ?></h5>
+                                    <h6>Ukuran : <?= $produck['ukuran']; ?></h6>
                                 </li>
                                 <li class="list-group-item">
-                                    <h5><?= $produck['cetak']; ?></h5>
+                                    <h6>Jenis kertas : <?= $produck['bahan_kertas']; ?></h6>
                                 </li>
                                 <li class="list-group-item">
-                                    <h5><?= $produck['bahan']; ?></h5>
+                                    <h6>Cover : <?= $produck['cover']; ?></h6>
                                 </li>
                                 <li class="list-group-item">
-                                    <h5><?= $produck['cover']; ?></h5>
+                                    <h6>Finishing : <?= $produck['finishing']; ?></h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <h6>Cetakan : <?= $produck['cetakan']; ?></h6>
+                                </li>
+                                <li class="list-group-item">
+                                    <h6>Dok. File : <?= $produck['dokFile']; ?></h6>
                                 </li>
                                 <li class="list-group-item">
                                     <form method="POST">
@@ -56,12 +63,12 @@
                                                     <input class="form-control" name="jumlah_katalog" type="number" min="1" max="9" step="1" value="1">
                                                 </div>
                                             </div>
-                                            
+
                                             <input type="hidden" name="total" value="<?= $produck['id']; ?>">
                                         </div>
                                 </li>
                                 <li class="list-group-item">
-                                    <button type="submit" class="btn btn-info btn-block">Order Now</button>
+                                    <button type="submit" class="btn btn-info btn-block" data-toggle="modal" data-target="#exampleModal">Order Now</button>
                                 </li>
                                 </form>
                             </ul>

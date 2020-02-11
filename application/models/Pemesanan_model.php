@@ -23,14 +23,16 @@ class Pemesanan_model extends  CI_Model
         return $this->db->get_where('tbl_bahan_kertas', ['id_jenis_ukuran' => $id])->result_array();
     }
 
-    
+
     public function producks()
     {
-        return $this->db->get('produck')->result_array();
+        $query = "SELECT `tbl_bahan`.*,`tbl_katalog`.`jenis_katalog` FROM `tbl_bahan` JOIN `tbl_katalog` ON `tbl_bahan`.`id_katalog`=`tbl_katalog`.`id`";
+        return $this->db->query($query)->result_array();
     }
 
     public function produck($id)
     {
-        return $this->db->get_where('produck', ['id' => $id])->row_array();
+
+        return $this->db->get_where('tbl_bahan', ['id' => $id])->row_array();
     }
 }
