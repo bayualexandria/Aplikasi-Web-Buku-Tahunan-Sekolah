@@ -88,8 +88,8 @@
                                     </ul>
                                     <?php $id = $user['id'];
                                     $query = "SELECT `tbl_pemesanan`.* FROM `pelanggan` JOIN `tbl_pemesanan` ON `pelanggan`.`id`=`tbl_pemesanan`.`id_pelanggan` WHERE `pelanggan`.`id`=$id ";
-                                    $status = $this->db->query($query)->result_array(); ?>
-                                    <?php if ($status[0]['id_status'] == 2) : ?>
+                                    $status = $this->db->query($query)->row_array(); ?>
+                                    <?php if ($status['id_status'] == 2) : ?>
                                         <div class="mt-3 float-right">
                                             <a href="<?= base_url('pemesanan/laporan_pdf'); ?>" class="btn btn-secondary">Laporan <i class="fa fa-print"></i></a>
                                         </div>

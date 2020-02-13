@@ -32,12 +32,15 @@
                 <tbody>
                   <?php $i = 1;
                   foreach ($All->result() as $psn) : ?>
+
                     <tr>
                       <td><?= $i++; ?></td>
                       <td><?= $psn->name; ?></td>
                       <td><?= $psn->alamat; ?></td>
                       <td><?= $psn->no_hp; ?></td>
-
+                      <td>
+                        <a href="<?= base_url('admin/pemesanan/detail/' . $psn->id) ?>"><i class="ti-eye text-primary"></i></a>
+                      </td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>

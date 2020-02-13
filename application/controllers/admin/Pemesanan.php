@@ -12,7 +12,7 @@ class Pemesanan extends  CI_Controller
     public function index()
     {
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-        $data['All']=$this->Pemesanan_model->getPemesanan();
+        $data['All'] = $this->Pemesanan_model->getPemesanan();
         $data['title'] = 'Data Pemesanan Buku Tahunan Sekolah';
         $data['message'] = $this->Home_model->getMessage();
         $data['message3'] = $this->Home_model->getMessage3();
@@ -24,24 +24,6 @@ class Pemesanan extends  CI_Controller
         $this->load->view('Template/Admin/footer');
     }
 
-    public function create()
-    {
-        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title'] = 'Insert Data Pemesanan Buku Tahunan Sekolah';
-        $data['add'] = 'Tambah Data Buku Tahunan Sekolah';
-
-        $data['All'] = $this->Pemesanan_model->getAll();
-        $data['Ukuran'] = $this->Pemesanan_model->getUkuran();
-        $data['message'] = $this->Home_model->getMessage();
-
-
-
-        $this->load->view('Template/Admin/header', $data);
-        $this->load->view('Template/Admin/navbar', $data);
-        $this->load->view('Template/Admin/sidebar');
-        $this->load->view('Backend/pemesanan/add', $data);
-        $this->load->view('Template/Admin/footer');
-    }
 
     public function insert()
     {
@@ -64,6 +46,46 @@ class Pemesanan extends  CI_Controller
             $this->load->view('Template/Admin/footer');
         } else {
             $this->Pemesanan_model->addData();
+            $this->session->set_flashdata('success', 'Data Pemesanan Telah Ditambahkan');
+            redirect('admin/pemesanan');
+        }
+    }
+
+    public function detail($id)
+    {
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $data['All'] = $this->Pemesanan_model->detail($id);
+        $data['message'] = $this->Home_model->getMessage();
+        $data['message3'] = $this->Home_model->getMessage3();
+
+        $data['title'] = 'Detail Data Pemesanan';
+        $this->load->view('Template/Admin/header', $data);
+        $this->load->view('Template/Admin/navbar', $data);
+        $this->load->view('Template/Admin/sidebar');
+        $this->load->view('Backend/pemesanan/detail', $data);
+        $this->load->view('Template/Admin/footer');
+    }
+
+    public function updateStatus($id)
+    {
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $data['one'] = $this->Pemesanan_model->status($id);
+        $data['message'] = $this->Home_model->getMessage();
+        $data['message3'] = $this->Home_model->getMessage3();
+
+        $this->form_validation->set_rules('id_status', 'Status', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Detail Data Pemesanan';
+            $this->load->view('Template/Admin/header', $data);
+            $this->load->view('Template/Admin/navbar', $data);
+            $this->load->view('Template/Admin/sidebar');
+            $this->load->view('Backend/pemesanan/statusUpdate', $data);
+            $this->load->view('Template/Admin/footer');
+        } else {
+            $this->Pemesanan_model->updateStatus();
+            $this->session->set_flashdata('success', 'Status Pemesanan Telah Diubah');
+            redirect('admin/pemesanan');
         }
     }
 }

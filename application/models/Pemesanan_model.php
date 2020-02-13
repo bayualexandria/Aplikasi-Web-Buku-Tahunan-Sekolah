@@ -4,19 +4,13 @@ class Pemesanan_model extends  CI_Model
 {
     public function getPemesanan()
     {
-       
+
         return $this->db->get('pelanggan');
     }
 
-
-    public function getUkuran()
+    public function status($id)
     {
-        return $this->db->get('tbl_ukuran_kertas');
-    }
-
-    public function getBahan($id)
-    {
-        return $this->db->get_where('tbl_bahan_kertas', ['id_jenis_ukuran' => $id])->result_array();
+        return $this->db->get_where('tbl_pemesanan', ['id_status' => $id])->row_array();
     }
 
 
@@ -58,6 +52,12 @@ class Pemesanan_model extends  CI_Model
         return $this->db->query($query)->row_array();
     }
 
+    public function detail($id)
+    {
+        $query = "SELECT `tbl_pemesanan`.*,`tbl_katalog`.`jenis_katalog`,`tbl_bahan`.`ukuran`,`tbl_bahan`.`bahan_kertas`,`tbl_bahan`.`harga`,`tbl_bahan`.`halaman`,`tbl_bahan`.`cover`,`tbl_bahan`.`finishing`,`tbl_bahan`.`cetakan`,`tbl_bahan`.`dokFile`,`tbl_bahan`.`pemesanan`,`tbl_bahan`.`bonus`,`tbl_bahan`.`harga`,`tbl_status`.`konfirmasi`,`tbl_status`.`style` FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id` JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` JOIN `tbl_bahan` ON `tbl_pemesanan`.`id_bahan`=`tbl_bahan`.`id` JOIN `tbl_status` ON `tbl_pemesanan`.`id_status`=`tbl_status`.`id` WHERE `tbl_pemesanan`.`id_pelanggan`=$id ORDER BY `tbl_pemesanan`.`date_created` ASC";
+        return $this->db->query($query)->result_array();
+    }
+
     public function cancel($id)
     {
         $status = 1;
@@ -80,6 +80,25 @@ class Pemesanan_model extends  CI_Model
             'date_created' => time()
         ];
         $data['total'] = $jumlah * $harga;
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('tbl_pemesanan', $data);
+    }
+
+    public function updateStatus()
+    {
+        $jumlah = $this->input->post('jumlah_katalog');
+
+        $data = [
+            'nama_pelanggan' => $this->input->post('nama_pelanggan'),
+            'id_pelanggan' => $this->input->post('id_pelanggan'),
+            'id_katalog' => $this->input->post('id_katalog'),
+            'id_bahan' => $this->input->post('id_bahan'),
+            'jumlah_katalog' => $jumlah,
+            'total' => $this->input->post('total'),
+            'id_status' => $this->input->post('id_status'),
+            'date_created' => time()
+        ];
 
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('tbl_pemesanan', $data);
