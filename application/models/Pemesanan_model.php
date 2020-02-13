@@ -88,4 +88,6 @@ class Pemesanan_model extends  CI_Model
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('tbl_pemesanan', $data);
     }
+
+
 }

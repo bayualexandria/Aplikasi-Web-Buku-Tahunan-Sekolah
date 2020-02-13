@@ -67,7 +67,7 @@
                             <div class="row">
                                 <div class="col-md my-5 mx-5">
                                     <?php $id = $user['id'];
-                                    $query = "SELECT `tbl_pemesanan`.*,`tbl_katalog`.`jenis_katalog`,`tbl_status`.`style` FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id`  JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` JOIN `tbl_bahan` ON `tbl_pemesanan`.`id_bahan`=`tbl_bahan`.`id`  JOIN `tbl_status` ON `tbl_pemesanan`.`id_status`=`tbl_status`.`id` WHERE `tbl_pemesanan`.`id_pelanggan`=$id ORDER BY `tbl_pemesanan`.`date_created` ASC";
+                                    $query = "SELECT `tbl_pemesanan`.*,`tbl_katalog`.`jenis_katalog`,`tbl_status`.`style`,`tbl_status`.`konfirmasi` FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id`  JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` JOIN `tbl_bahan` ON `tbl_pemesanan`.`id_bahan`=`tbl_bahan`.`id`  JOIN `tbl_status` ON `tbl_pemesanan`.`id_status`=`tbl_status`.`id` WHERE `tbl_pemesanan`.`id_pelanggan`=$id ORDER BY `tbl_pemesanan`.`date_created` ASC";
                                     $orderList = $this->db->query($query)->result_array(); ?>
 
                                     <ul class="list-group">
@@ -86,7 +86,14 @@
                                             <?php endif; ?>
                                         <?php endforeach; ?>
                                     </ul>
-
+                                    <?php $id = $user['id'];
+                                    $query = "SELECT `tbl_pemesanan`.* FROM `pelanggan` JOIN `tbl_pemesanan` ON `pelanggan`.`id`=`tbl_pemesanan`.`id_pelanggan` WHERE `pelanggan`.`id`=$id ";
+                                    $status = $this->db->query($query)->result_array(); ?>
+                                    <?php if ($status[0]['id_status'] == 2) : ?>
+                                        <div class="mt-3 float-right">
+                                            <a href="<?= base_url('pemesanan/laporan_pdf'); ?>" class="btn btn-secondary">Laporan <i class="fa fa-print"></i></a>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

@@ -7,6 +7,7 @@ class Pemesanan extends CI_Controller
         parent::__construct();
         $this->load->model('Pelanggan_model');
         $this->load->model('Pemesanan_model');
+        $this->load->library('pdf');
         is_logged();
     }
 
@@ -16,10 +17,19 @@ class Pemesanan extends CI_Controller
         $data['title'] = 'Pemesanan';
         $data['description'] = 'Halaman Pemesanan Buku Tahunan Sekolah';
         $data['producks'] = $this->Pemesanan_model->producks();
+      
 
         $this->load->view('frontend/auth/template/header', $data);
         $this->load->view('frontend/pemesanan/index', $data);
         $this->load->view('frontend/auth/template/footer');
+    }
+
+    public function laporan_pdf()
+    {
+        $data['user'] = $this->db->get_where('pelanggan', ['email_pelanggan' => $this->session->userdata('email_pelanggan')])->row_array();
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename='laporan_pemesanan.pdf';
+        $this->pdf->load_view('frontend/pemesanan/laporan_pdf',$data);
     }
 
     public function order($id)
