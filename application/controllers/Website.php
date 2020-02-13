@@ -15,22 +15,22 @@ class Website extends CI_Controller
     public function portfolio()
     {
         $data['user'] = $this->db->get_where('pelanggan', ['email_pelanggan' => $this->session->userdata('email_pelanggan')])->row_array();
-        $data['title'] = 'Daftar Desain';
-        $data['description'] = 'Halaman Daftar Desain Azharku Media';
+        $data['title'] = 'Portfolio';
+        $data['description'] = 'Halaman Portfolio Azharku Media';
 
         $this->load->view('template/website/header', $data);
-        $this->load->view('frontend/generic');
+        $this->load->view('frontend/element');
         $this->load->view('template/website/footer');
     }
 
     public function blog()
     {
         $data['user'] = $this->db->get_where('pelanggan', ['email_pelanggan' => $this->session->userdata('email_pelanggan')])->row_array();
-        $data['title'] = 'Portfolio';
-        $data['description'] = 'Halaman Portfolio Azharku Media';
+        $data['title'] = 'Daftar Desain';
+        $data['description'] = 'Halaman Daftar Desain Azharku Media';
 
         $this->load->view('template/website/header', $data);
-        $this->load->view('frontend/element');
+        $this->load->view('frontend/generic');
         $this->load->view('template/website/footer');
     }
 

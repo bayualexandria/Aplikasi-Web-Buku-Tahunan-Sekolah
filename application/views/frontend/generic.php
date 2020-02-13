@@ -7,23 +7,19 @@
 <div class="wrapper">
 	<section class="recent-works">
 		<div class="container">
-			<h2>Recent Works</h2>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+			<h2><?= $title;?></h2>
+			<p><?= $description;?></p>
 			<span class="dot-dash dark">.</span>
 			<div class="recent-works--nav">
 				<ul>
 					<li class="active" data-filter="*">All Items</li>
-					<li data-filter=".print">Print Design</li>
-					<li data-filter=".animation">Animation</li>
-					<li data-filter=".art">Art</li>
-					<li data-filter=".web">Web Design</li>
-					<li data-filter=".photo">Photography</li>
-					<li data-filter=".video">Video</li>
+					<li data-filter=".large">Katalog Besar</li>
+					<li data-filter=".small">Katalog Kecil</li>
 				</ul>
 			</div>
 		</div>
 		<div class="recent-works--items">
-			<div class="recent-works--items__item web">
+			<div class="recent-works--items__item large">
 				<a href="single-portfolio.html">
 					<img src="<?= base_url();?>assets/web/assets/img/3.jpg" alt="">
 					<div class="inner-item">
@@ -34,7 +30,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="recent-works--items__item print">
+			<div class="recent-works--items__item small">
 				<a href="single-portfolio.html">
 					<img src="<?= base_url();?>assets/web/assets/img/4.jpg" alt="">
 					<div class="inner-item">
@@ -45,7 +41,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="recent-works--items__item art">
+			<div class="recent-works--items__item large">
 				<a href="single-portfolio.html">
 					<img src="<?= base_url();?>assets/web/assets/img/3.jpg" alt="">
 					<div class="inner-item">
@@ -56,7 +52,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="recent-works--items__item web">
+			<div class="recent-works--items__item small">
 				<a href="single-portfolio.html">
 					<img src="<?= base_url();?>assets/web/assets/img/4.jpg" alt="">
 					<div class="inner-item">
@@ -67,7 +63,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="recent-works--items__item print">
+			<div class="recent-works--items__item small">
 				<a href="single-portfolio.html">
 					<img src="<?= base_url();?>assets/web/assets/img/4.jpg" alt="">
 					<div class="inner-item">
@@ -78,7 +74,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="recent-works--items__item web">
+			<div class="recent-works--items__item large">
 				<a href="single-portfolio.html">
 					<img src="<?= base_url();?>assets/web/assets/img/3.jpg" alt="">
 					<div class="inner-item">
@@ -89,7 +85,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="recent-works--items__item web">
+			<div class="recent-works--items__item small">
 				<a href="single-portfolio.html">
 					<img src="<?= base_url();?>assets/web/assets/img/4.jpg" alt="">
 					<div class="inner-item">
@@ -100,7 +96,7 @@
 					</div>
 				</a>
 			</div>
-			<div class="recent-works--items__item art">
+			<div class="recent-works--items__item large">
 				<a href="single-portfolio.html">
 					<img src="<?= base_url();?>assets/web/assets/img/3.jpg" alt="">
 					<div class="inner-item">

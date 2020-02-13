@@ -56,4 +56,9 @@ class Pemesanan_model extends  CI_Model
 
         $this->db->insert('tbl_pemesanan', $data);
     }
+    public function detailPemesanan($id)
+    {
+        $query = "SELECT `tbl_pemesanan`.*,`tbl_katalog`.*,`tbl_bahan`.*,`pelanggan`.*,`tbl_status`.* FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id`  JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` JOIN `tbl_bahan` ON `tbl_pemesanan`.`id_bahan`=`tbl_bahan`.`id` JOIN `tbl_status` ON `tbl_pemesanan`.`id_status`=`tbl_status`.`id` WHERE `tbl_pemesanan`.`id`=$id ORDER BY `tbl_pemesanan`.`date_created` ASC";
+        return $this->db->query($query)->row_array();
+    }
 }

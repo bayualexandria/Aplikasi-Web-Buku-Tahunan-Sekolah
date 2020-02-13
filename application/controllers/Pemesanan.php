@@ -9,6 +9,7 @@ class Pemesanan extends CI_Controller
         $this->load->model('Pemesanan_model');
         is_logged();
     }
+
     public function index()
     {
         $data['user'] = $this->db->get_where('pelanggan', ['email_pelanggan' => $this->session->userdata('email_pelanggan')])->row_array();
@@ -28,11 +29,17 @@ class Pemesanan extends CI_Controller
         $data['description'] = 'Halaman Order Buku Tahunan Sekolah';
         $data['produck'] = $this->Pemesanan_model->bahan($id);
 
+        $this->form_validation->set_rules('jumlah_katalog', 'Jumlah Katalog', 'required|trim');
 
-        $this->load->view('frontend/auth/template/header', $data);
-        $this->load->view('frontend/pemesanan/order', $data);
-        $this->load->view('frontend/auth/template/footer');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('frontend/auth/template/header', $data);
+            $this->load->view('frontend/pemesanan/order', $data);
+            $this->load->view('frontend/auth/template/footer');
+        } else {
+            $this->insertPemesanan();
+        }
     }
+
     public function insertPemesanan()
     {
         $this->Pemesanan_model->insertPemesanan();
@@ -40,10 +47,13 @@ class Pemesanan extends CI_Controller
         redirect('Pemesanan');
     }
 
-    public function list()
+    public function detail($id)
     {
         $data['user'] = $this->db->get_where('pelanggan', ['email_pelanggan' => $this->session->userdata('email_pelanggan')])->row_array();
-        $data['title'] = 'Order';
-        $data['description'] = 'Halaman Order Buku Tahunan Sekolah';
+        $data['title'] = 'Detail Pemesanan';
+        $data['detail'] = $this->Pemesanan_model->detailPemesanan($id);
+        $this->load->view('frontend/auth/template/header', $data);
+        $this->load->view('frontend/pemesanan/detail', $data);
+        $this->load->view('frontend/auth/template/footer');
     }
 }

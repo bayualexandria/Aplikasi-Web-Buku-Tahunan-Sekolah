@@ -62,11 +62,14 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-4">
+                                                <?php if(form_error('jumlah_katalog')==0):?>
                                                     <input class="form-control" name="jumlah_katalog" type="number" min="1" max="12" step="1" value="1" id="jumlah" >
+                                                <?php endif;?>
                                                 </div>
-                                                <h6 style="margin-right: -15px; margin-top:8px;">Rp </h6>
+                                                <div class="col-md-1"></div>
+                                                <h6 style="margin-right: -15px; margin-top:10px;">Rp</h6>
                                                 <div class="col-md">
-                                                    <input type="text text-muted" style="font-weight:800;color:silver; font-size:1.3rem;" class="form-control-plaintext position-absolute" id="total" readonly>
+                                                    <input type="text text-muted mr-5" style="font-weight:800;color:silver; font-size:1.3rem;" class="form-control-plaintext position-absolute" id="total" readonly>
                                                 </div>
                                             </div>
 

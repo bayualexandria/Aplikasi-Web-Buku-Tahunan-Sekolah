@@ -26,8 +26,8 @@
             <nav style="font-weight: 800;">
                 <div class="nav nav-tabs " id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="nav-dashboard-tab" data-toggle="tab" href="#nav-dashboard" role="tab" aria-controls="nav-dashboard" aria-selected="false"> <i class="ti-direction menu-icon"></i> Dashboard</a>
-                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"> <i class="ti-key menu-icon"></i> Daftar Pemesanan</a>
-                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"> <i class="ti-key menu-icon"></i> Status Pemesanan</a>
+                    <a class="nav-item nav-link" id="nav-list-tab" data-toggle="tab" href="#nav-list" role="tab" aria-controls="nav-list" aria-selected="false"> <i class="ti-key menu-icon"></i> Daftar Pemesanan</a>
+                    <a class="nav-item nav-link" id="nav-status-tab" data-toggle="tab" href="#nav-status" role="tab" aria-controls="nav-status" aria-selected="false"> <i class="ti-key menu-icon"></i> Status Pemesanan</a>
                 </div>
             </nav>
             <div class="card mt-5 " style="font-weight: 500;">
@@ -62,23 +62,38 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md my-5 mx-5">
                                     <?php $id = $user['id'];
-                                    $query = "SELECT `tbl_pemesanan`.*,`tbl_katalog`.*,`tbl_bahan`.*,`pelanggan`.* FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id`  JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` JOIN `tbl_bahan` ON `tbl_pemesanan`.`id_bahan`=`tbl_bahan`.`id` WHERE `tbl_pemesanan`.`id_pelanggan`=$id";
+                                    $query = "SELECT `tbl_pemesanan`.*,`tbl_katalog`.`jenis_katalog` FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id`  JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` JOIN `tbl_bahan` ON `tbl_pemesanan`.`id_bahan`=`tbl_bahan`.`id` WHERE `tbl_pemesanan`.`id_pelanggan`=$id ORDER BY `tbl_pemesanan`.`date_created` ASC";
                                     $orderList = $this->db->query($query)->result_array(); ?>
 
                                     <ul class="list-group">
                                         <?php foreach ($orderList as $ol) : ?>
                                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <?= $ol['jenis_katalog']; ?> ( <?= date('d-M-Y',$ol['date_created']); ?>)
-                                                <span class="badge badge-primary badge-pill">14</span>
+                                                <?= $ol['jenis_katalog']; ?> <p class="float-left mt-3" style="font-size: 12px;font-weight:bold"><?= date('d F Y', $ol['date_created']); ?></p>
+                                                <a href="<?= base_url('pemesanan/detail/' . $ol['id']); ?>" class="badge badge-primary badge-pill">detail</a>
                                             </li>
                                         <?php endforeach; ?>
                                     </ul>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-status" role="tabpanel" aria-labelledby="nav-status-tab">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4 my-5 mx-4">
+                                    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                        <div class="card-header">Header</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Primary card title</h5>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

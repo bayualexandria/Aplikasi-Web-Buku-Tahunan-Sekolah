@@ -55,9 +55,10 @@ $("#jumlah, #harga").keyup(function () {
 	const harga = $("#harga").val();
 	const jumlah = $("#jumlah").val();
 
-	const total = parseInt(harga) * parseInt(jumlah);
-	$("#total").val(total);
+	total = parseInt(harga) * parseInt(jumlah);
+
+	// Menghilangkan fungsi NaN
+	if (!isNaN(total)) {
+		$("#total").val(total);
+	}
 });
-
-
-

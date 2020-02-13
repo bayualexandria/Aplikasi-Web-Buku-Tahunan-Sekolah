@@ -2,7 +2,7 @@
     <div class="home-slider--wrapper">
 
         <div>
-            <div class="home-slider--wrapper__inner" style="background-image: url('<?= base_url(); ?>assets/web/assets/img/slider.jpg')">
+            <div class="home-slider--wrapper__inner" style="background-image: url('<?= base_url(); ?>assets/images/cover.jpg')">
                 <div class="container">
                     <h3><?= $title; ?></h3>
                     <h1><?= $name; ?></h1>
@@ -53,7 +53,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-12 col-xs-12">
-                    <img src="<?= base_url(); ?>assets/web/assets/img/Monitor.png" alt="" />
+                    <img src="<?= base_url(); ?>assets/images/tahunan.jpg" alt="" />
                 </div>
                 <div class="col-md-7 col-sm-12 col-xs-12">
                     <h2>Our History</h2>
