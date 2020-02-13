@@ -23,7 +23,7 @@
         <div class="col-md">
             <div class="card">
                 <div class="container" style="margin:10px auto;">
-                    <h3 class="card-title"><?= $title;?></h3>
+                    <h3 class="card-title"><?= $title; ?></h3>
                     <div class="row mt-5">
                         <div class="col-md-6 text-center">
                             <img src="<?= base_url('assets/images/buku-tahunan-sekolah.jpg'); ?>" class="img-thumbnail w-75" style="border-radius: 5%;height:200px;width:auto" alt="">
@@ -52,24 +52,25 @@
                                 <li class="list-group-item">
                                     <h6>Dok. File : <?= $produck['dokFile']; ?></h6>
                                 </li>
-                                <form method="POST" action="<?= base_url('Pemesanan/insertPemesanan'); ?>">
+                                <form method="POST" action="">
+                                    <input type="hidden" name="id" value="<?= $produck['id'] ?>" />
                                     <li class="list-group-item">
                                         <input type="hidden" name="nama_pelanggan" value="<?= $user['name']; ?>">
                                         <input type="hidden" name="id_pelanggan" value="<?= $user['id']; ?>">
-                                        <input type="hidden" name="id_bahan" value="<?= $produck['id']; ?>">
+                                        <input type="hidden" name="id_bahan" value="<?= $produck['id_bahan']; ?>">
                                         <input type="hidden" name="id_katalog" value="<?= $produck['id_katalog']; ?>">
                                         <input type="hidden" name="harga" value="<?= $produck['harga']; ?>" id="harga">
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                <?php if(form_error('jumlah_katalog')==0):?>
-                                                    <input class="form-control" name="jumlah_katalog" type="number" min="1" max="12" step="1" value="1" id="jumlah" >
-                                                <?php endif;?>
+                                                    <?php if (form_error('jumlah_katalog') == 0) : ?>
+                                                        <input class="form-control" name="jumlah_katalog" type="number" min="1" max="12" step="1" value="<?= $produck['jumlah_katalog']; ?>" id="jumlah">
+                                                    <?php endif; ?>
                                                 </div>
                                                 <div class="col-md-1"></div>
                                                 <h6 style="margin-right: -15px; margin-top:10px;">Rp</h6>
                                                 <div class="col-md">
-                                                    <input type="text text-muted mr-5" style="font-weight:800;color:silver; font-size:1.3rem;" class="form-control-plaintext position-absolute" id="total" readonly>
+                                                    <input type="text text-muted mr-5" style="font-weight:800;color:silver; font-size:1.3rem;" class="form-control-plaintext position-absolute" value="<?= $produck['total']; ?>" id="total" readonly>
                                                 </div>
                                             </div>
 

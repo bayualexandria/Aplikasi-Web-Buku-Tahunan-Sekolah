@@ -67,15 +67,23 @@
                             <div class="row">
                                 <div class="col-md my-5 mx-5">
                                     <?php $id = $user['id'];
-                                    $query = "SELECT `tbl_pemesanan`.*,`tbl_katalog`.`jenis_katalog` FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id`  JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` JOIN `tbl_bahan` ON `tbl_pemesanan`.`id_bahan`=`tbl_bahan`.`id` WHERE `tbl_pemesanan`.`id_pelanggan`=$id ORDER BY `tbl_pemesanan`.`date_created` ASC";
+                                    $query = "SELECT `tbl_pemesanan`.*,`tbl_katalog`.`jenis_katalog`,`tbl_status`.`style` FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id`  JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` JOIN `tbl_bahan` ON `tbl_pemesanan`.`id_bahan`=`tbl_bahan`.`id`  JOIN `tbl_status` ON `tbl_pemesanan`.`id_status`=`tbl_status`.`id` WHERE `tbl_pemesanan`.`id_pelanggan`=$id ORDER BY `tbl_pemesanan`.`date_created` ASC";
                                     $orderList = $this->db->query($query)->result_array(); ?>
 
                                     <ul class="list-group">
                                         <?php foreach ($orderList as $ol) : ?>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <?= $ol['jenis_katalog']; ?> <p class="float-left mt-3" style="font-size: 12px;font-weight:bold"><?= date('d F Y', $ol['date_created']); ?></p>
-                                                <a href="<?= base_url('pemesanan/detail/' . $ol['id']); ?>" class="badge badge-primary badge-pill">detail</a>
-                                            </li>
+                                            <?php if ($ol['style'] == 'danger') : ?>
+                                            <?php else : ?>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <?= $ol['jenis_katalog']; ?> <p class="float-left mt-3" style="font-size: 12px;font-weight:bold"><?= date('d F Y', $ol['date_created']); ?></p>
+                                                    <div class="float-left">
+                                                        <!-- <?php if ($ol['konfirmasi'] == 'order') : ?>
+                                                            <a href="<?= base_url('pemesanan/batal/' . $ol['id']); ?>" class="badge badge-danger badge-pill">cancel</a>
+                                                        <?php endif; ?> -->
+                                                        <a href="<?= base_url('pemesanan/detail/' . $ol['id']); ?>" class="badge badge-primary badge-pill">detail</a>
+                                                    </div>
+                                                </li>
+                                            <?php endif; ?>
                                         <?php endforeach; ?>
                                     </ul>
 
@@ -85,17 +93,23 @@
                     </div>
                     <div class="tab-pane fade" id="nav-status" role="tabpanel" aria-labelledby="nav-status-tab">
                         <div class="container">
-                            <div class="row">
-                                <div class="col-md-4 my-5 mx-4">
-                                    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                                        <div class="card-header">Header</div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Primary card title</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        </div>
+                            <?php $id = $user['id'];
+                            $query = "SELECT `tbl_pemesanan`.*,`tbl_katalog`.`jenis_katalog`,`tbl_status`.`konfirmasi`,`tbl_status`.`style` FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id`  JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` JOIN `tbl_bahan` ON `tbl_pemesanan`.`id_bahan`=`tbl_bahan`.`id` JOIN `tbl_status` ON `tbl_pemesanan`.`id_status`=`tbl_status`.`id` WHERE `tbl_pemesanan`.`id_pelanggan`=$id ORDER BY `tbl_pemesanan`.`date_created` DESC";
+                            $orderList = $this->db->query($query)->result_array(); ?>
+                            <?php foreach ($orderList as $oL) : ?>
+                                <div class="row mt-2">
+                                    <div class="list-group mx-2 mb-2">
+                                        <a href="#" class="list-group-item list-group-item-action active ">
+                                            <div class="d-flex justify-content-between" style="width: 667px;">
+                                                <h5 class="mb-1"><?= $oL['jenis_katalog']; ?></h5>
+                                                <small><?= date('d M', $oL['date_created']); ?></small>
+                                            </div>
+                                            <p class="mb-1 pt-3">Status Pemesanan</p>
+                                            <small class="badge badge-pill badge-<?= $oL['style']; ?>"><?= $oL['konfirmasi']; ?></small>
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>

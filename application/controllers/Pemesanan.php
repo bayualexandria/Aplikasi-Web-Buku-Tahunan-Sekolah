@@ -25,7 +25,7 @@ class Pemesanan extends CI_Controller
     public function order($id)
     {
         $data['user'] = $this->db->get_where('pelanggan', ['email_pelanggan' => $this->session->userdata('email_pelanggan')])->row_array();
-        $data['title'] = 'Order';
+        $data['title'] = 'Pemesanan Order';
         $data['description'] = 'Halaman Order Buku Tahunan Sekolah';
         $data['produck'] = $this->Pemesanan_model->bahan($id);
 
@@ -55,5 +55,32 @@ class Pemesanan extends CI_Controller
         $this->load->view('frontend/auth/template/header', $data);
         $this->load->view('frontend/pemesanan/detail', $data);
         $this->load->view('frontend/auth/template/footer');
+    }
+
+    public function batal($id)
+    {
+        $this->Pemesanan_model->cancel($id);
+        $this->session->set_flashdata('success', 'Anda telah membatalkan pemesanan');
+        redirect('Pemesanan');
+    }
+
+    public function update($id)
+    {
+        $data['user'] = $this->db->get_where('pelanggan', ['email_pelanggan' => $this->session->userdata('email_pelanggan')])->row_array();
+        $data['title'] = 'Update Order Pemesanan';
+        $data['description'] = 'Halaman Update Order Buku Tahunan Sekolah';
+        $data['produck'] = $this->Pemesanan_model->detailPemesanan($id);
+
+        $this->form_validation->set_rules('jumlah_katalog', 'Jumlah Katalog', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('frontend/auth/template/header', $data);
+            $this->load->view('frontend/pemesanan/update', $data);
+            $this->load->view('frontend/auth/template/footer');
+        } else {
+            $this->Pemesanan_model->update();
+            $this->session->set_flashdata('success', 'Anda telah merubah pemesanan anda');
+            redirect('Pemesanan');
+        }
     }
 }

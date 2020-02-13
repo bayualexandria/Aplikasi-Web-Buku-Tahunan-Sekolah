@@ -64,14 +64,28 @@
                       <h6>Jumlah : <?= $detail['jumlah_katalog']; ?></h6>
                     </div>
                     <div class="col-md font-weight-bold">
-                      Total : Rp <?= $detail['total'];?>
+                      Total : Rp <?= $detail['total']; ?>
                     </div>
                   </div>
                 </li>
 
                 <li class="list-group-item">
-                  <h6>Status : <span class="badge badge-<?= $detail['style'];?> badge-pill"><?= $detail['konfirmasi'];?></span></h6>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h6>Status : <span class="badge badge-<?= $detail['style']; ?> badge-pill"><?= $detail['konfirmasi']; ?></span></h6>
+                    </div>
+                    <?php if ($detail['konfirmasi'] == 'order') : ?>
+                    <div class="col-md">
+                    <a href="<?= base_url('pemesanan/batal/' . $detail['id']) ?>" class="btn btn-block btn-danger">Batal Pemesanan</a>
+                    </div>
+                    <?php endif;?>
+                  </div>
                 </li>
+                <?php if ($detail['konfirmasi'] == 'order') : ?>
+                  <li class="list-group-item">
+                    <a href="<?= base_url('pemesanan/update/' . $detail['id']) ?>" class="btn btn-block btn-info">Update Pemesanan</a>
+                  </li>
+                <?php endif; ?>
               </ul>
             </div>
           </div>
