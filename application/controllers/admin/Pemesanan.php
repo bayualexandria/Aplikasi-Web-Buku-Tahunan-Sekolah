@@ -12,7 +12,7 @@ class Pemesanan extends  CI_Controller
     public function index()
     {
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-        $data['All'] = $this->Pemesanan_model->getAll();
+        $data['All']=$this->Pemesanan_model->getPemesanan();
         $data['title'] = 'Data Pemesanan Buku Tahunan Sekolah';
         $data['message'] = $this->Home_model->getMessage();
         $data['message3'] = $this->Home_model->getMessage3();
@@ -41,28 +41,6 @@ class Pemesanan extends  CI_Controller
         $this->load->view('Template/Admin/sidebar');
         $this->load->view('Backend/pemesanan/add', $data);
         $this->load->view('Template/Admin/footer');
-    }
-
-    public function ambil_data()
-    {
-        $id = $this->input->post('id');
-        $modul = $this->input->post('modul');
-        $data = $this->Pemesanan_model->kabupaten($id);
-        echo json_encode($data);
-    }
-
-    public function kategori()
-    {
-        $id = $this->input->post('id');
-        $data = $this->Pemesanan_model->getBahan($id);
-        echo json_encode($data);
-    }
-
-    public function total()
-    {
-        $id = $this->input->post('id');
-        $data = $this->Pemesanan->getBahan($id);
-        echo json_encode($data);
     }
 
     public function insert()

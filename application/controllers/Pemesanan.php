@@ -17,7 +17,7 @@ class Pemesanan extends CI_Controller
         $data['title'] = 'Pemesanan';
         $data['description'] = 'Halaman Pemesanan Buku Tahunan Sekolah';
         $data['producks'] = $this->Pemesanan_model->producks();
-      
+
 
         $this->load->view('frontend/auth/template/header', $data);
         $this->load->view('frontend/pemesanan/index', $data);
@@ -27,9 +27,9 @@ class Pemesanan extends CI_Controller
     public function laporan_pdf()
     {
         $data['user'] = $this->db->get_where('pelanggan', ['email_pelanggan' => $this->session->userdata('email_pelanggan')])->row_array();
-        $this->pdf->setPaper('A4', 'potrait');
-        $this->pdf->filename='laporan_pemesanan.pdf';
-        $this->pdf->load_view('frontend/pemesanan/laporan_pdf',$data);
+        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->filename = 'laporan_pemesanan.pdf';
+        $this->pdf->load_view('frontend/pemesanan/laporan_pdf', $data);
     }
 
     public function order($id)
@@ -92,5 +92,16 @@ class Pemesanan extends CI_Controller
             $this->session->set_flashdata('success', 'Anda telah merubah pemesanan anda');
             redirect('Pemesanan');
         }
+    }
+
+    public function lap()
+    {
+        $data['user'] = $this->db->get_where('pelanggan', ['email_pelanggan' => $this->session->userdata('email_pelanggan')])->row_array();
+        $data['title'] = 'Update Order Pemesanan';
+        $data['description'] = 'Halaman Update Order Buku Tahunan Sekolah';
+        $this->load->view('frontend/auth/template/header', $data);
+
+        $this->load->view('frontend/pemesanan/lap');
+        $this->load->view('frontend/auth/template/footer');
     }
 }

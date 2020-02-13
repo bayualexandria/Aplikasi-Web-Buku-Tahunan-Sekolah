@@ -18,9 +18,6 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title"><?= $title; ?></h4>
-            <p class="card-description float-right">
-              <a href="<?= base_url('admin/Pemesanan/create')?>" class="btn-rounded btn-success btn-sm" >Tambah Data Tahunan</a>
-            </p>
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
@@ -29,11 +26,7 @@
                     <th>Nama Pelanggan</th>
                     <th>Alamat</th>
                     <th>No Handphone</th>
-                    <th>Jenis Ukuran</th>
-                    <th>Model Bahan</th>
-                    <th>Jumlah</th>
-                    <th>Total Harga</th>
-                    <th>Status</th>
+
                   </tr>
                 </thead>
                 <tbody>
@@ -41,14 +34,10 @@
                   foreach ($All->result() as $psn) : ?>
                     <tr>
                       <td><?= $i++; ?></td>
-                      <td><?= $psn->nama_pelanggan; ?></td>
+                      <td><?= $psn->name; ?></td>
                       <td><?= $psn->alamat; ?></td>
                       <td><?= $psn->no_hp; ?></td>
-                      <td><?= $psn->jenis_ukuran; ?></td>
-                      <td><?= $psn->bahan; ?></td>
-                      <td><?= $psn->jumlah_katalog; ?></td>
-                      <td><?= $psn->total; ?></td>
-                      <td><?= $psn->konfirmasi; ?></td>
+
                     </tr>
                   <?php endforeach; ?>
                 </tbody>

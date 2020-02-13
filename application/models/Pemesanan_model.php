@@ -4,14 +4,10 @@ class Pemesanan_model extends  CI_Model
 {
     public function getPemesanan()
     {
-        return $this->db->get('tbl_pemesanan')->result_array();
+       
+        return $this->db->get('pelanggan');
     }
 
-    public function getAll()
-    {
-        $query = "SELECT * FROM `tbl_pemesanan` JOIN `tbl_ukuran_kertas` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` JOIN `tbl_bahan` ON `tbl_pemesanan`.`id_bahan`=`tbl_bahan_kertas`.`id` JOIN `tbl_status` ON `tbl_pemesanan`.`id_status`=`tbl_status`.`id`";
-        return $this->db->query($query)->result_array();
-    }
 
     public function getUkuran()
     {
@@ -88,6 +84,4 @@ class Pemesanan_model extends  CI_Model
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('tbl_pemesanan', $data);
     }
-
-
 }
