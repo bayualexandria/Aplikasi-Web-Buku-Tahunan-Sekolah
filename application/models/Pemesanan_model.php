@@ -10,7 +10,8 @@ class Pemesanan_model extends  CI_Model
 
     public function status($id)
     {
-        return $this->db->get_where('tbl_pemesanan', ['id_status' => $id])->row_array();
+        $query = "SELECT `tbl_pemesanan`.*, `pelanggan`.`email_pelanggan` FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id` WHERE `tbl_pemesanan`.`id`=$id";
+        return $this->db->query($query)->row_array();
     }
 
 
@@ -102,5 +103,10 @@ class Pemesanan_model extends  CI_Model
 
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('tbl_pemesanan', $data);
+    }
+
+    public function delete($id)
+    {
+        return $this->db->delete('tbl_pemesanan', ['id' => $id]);
     }
 }

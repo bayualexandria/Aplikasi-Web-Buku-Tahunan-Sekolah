@@ -21,7 +21,7 @@
                             <?php foreach ($All as $a) : ?>
                                 <div class="col-md-4">
                                     <div class="card" style="width: 18rem;">
-                                        <img src="<?= base_url('assets/images/buku-tahunan-sekolah.jpg')?>" class="card-img-top" alt="...">
+                                        <img src="<?= base_url('assets/images/buku-tahunan-sekolah.jpg') ?>" class="card-img-top" alt="...">
                                         <div class="card-body text-center font-weight-bold">
                                             <h5 class="card-title"><?= $a['jenis_katalog']; ?></h5>
                                             <p class="card-text">Rp <?= $a['harga']; ?> / <?= $a['halaman']; ?> Halaman</p>
@@ -37,12 +37,20 @@
                                         <div class="card-body">
                                             <div class="float-left mt-0">
                                                 <h6 class="ml-1">Status</h6>
-                                                <a href="<?= base_url('admin/pemesanan/updateStatus/'.$a['id_status'])?>" class="badge badge-pill badge-<?= $a['style'] ?>"><?= $a['konfirmasi']; ?></a>
+                                                <?php if ($a['id_status'] == 2) : ?>
+                                                    <span class="badge badge-pill badge-<?= $a['style'] ?>"><?= $a['konfirmasi']; ?></span>
+                                                <?php else : ?>
+                                                    <a href="<?= base_url('admin/pemesanan/updateStatus/' . $a['id']) ?>" class="badge badge-pill badge-<?= $a['style'] ?>"><?= $a['konfirmasi']; ?></a>
+                                                <?php endif; ?>
                                             </div>
                                             <div class="float-right font-weight-bold">
                                                 <p>Jumlah : <?= $a['jumlah_katalog']; ?></p>
                                                 <p>Total : Rp <?= $a['total']; ?></p>
                                             </div>
+                                        </div>
+                                        <div class="card-footer text-muted">
+                                            <a href="<?= base_url('admin/pemesanan/update/' . $a['id']); ?>" class="btn btn-primary btn-sm btn-block mb-3">Edit <i class="icon ti-pencil-alt2 menu-icon"></i></a>
+                                            <a href="<?= base_url('admin/pemesanan/delete/' . $a['id']); ?>" class="btn btn-danger btn-sm hapus btn-block">Hapus <i class="ti-trash icon menu-icon"></i></a>
                                         </div>
                                     </div>
                                 </div>

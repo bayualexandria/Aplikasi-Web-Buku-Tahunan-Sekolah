@@ -18,6 +18,9 @@ class Home extends CI_Controller
         $data['message3'] = $this->Home_model->getMessage3();
         $data['NumRowUser'] = $this->Home_model->numPelanggan();
         $data['NumRowMessage'] = $this->Home_model->numMessage();
+        $data['NumRowPemesanan'] = $this->Home_model->numPemesanan();
+        $data['getPemesanan'] = $this->Home_model->getPemesanan();
+        $data['NumRowBahan'] = $this->Home_model->numBahan();
         $data['plg'] = $this->Home_model->getPelanggan();
         $data['title'] = 'Halaman Home';
         $this->load->view('template/admin/header', $data);

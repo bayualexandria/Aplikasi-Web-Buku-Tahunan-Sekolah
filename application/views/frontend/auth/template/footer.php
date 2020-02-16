@@ -9,16 +9,12 @@
                 <ul>
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                    <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-                    <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                    <li><a href="#"><i class="fa fa-envelope"></i></a></li>
                 </ul>
             </div>
             <div class="col-md-6 col-sm-12">
-                <p><a href="https://rubik-technologies.com/">Rubik Technologies</a></p>
+                <p><a href="https://rubik-technologies.com/">Azharku Media</a></p>
             </div>
         </div>
     </div>

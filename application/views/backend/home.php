@@ -24,7 +24,6 @@
               <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"><?= $NumRowMessage; ?></h3>
               <i class="ti-email icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
             </div>
-            <p class="mb-0 mt-2 text-danger">0.12% <span class="text-black ml-1"><small>(30 days)</small></span></p>
           </div>
         </div>
       </div>
@@ -36,7 +35,7 @@
               <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"><?= $NumRowUser; ?></h3>
               <i class="ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
             </div>
-            <p class="mb-0 mt-2 text-danger">0.47% <span class="text-black ml-1"><small>(30 days)</small></span></p>
+
           </div>
         </div>
       </div>
@@ -45,10 +44,9 @@
           <div class="card-body">
             <p class="card-title text-md-center text-xl-left">Data Buku Tahunan</p>
             <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-              <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">5</h3>
+              <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"><?= $NumRowBahan; ?></h3>
               <i class="ti-agenda icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
             </div>
-            <p class="mb-0 mt-2 text-success">64.00%<span class="text-black ml-1"><small>(30 days)</small></span></p>
           </div>
         </div>
       </div>
@@ -57,10 +55,10 @@
           <div class="card-body">
             <p class="card-title text-md-center text-xl-left">Pemesanan</p>
             <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
-              <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">0</h3>
+              <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0"><?= $NumRowPemesanan; ?></h3>
               <i class="ti-layers-alt icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
             </div>
-            <p class="mb-0 mt-2 text-success">23.00%<span class="text-black ml-1"><small>(30 days)</small></span></p>
+
           </div>
         </div>
       </div>
@@ -129,49 +127,25 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th>User</th>
-                    <th>Product</th>
-                    <th>Sale</th>
+                    <th>Pelanggan</th>
+                    <th>Produk</th>
+                    <th>QTY</th>
                     <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Jacob</td>
-                    <td>Photoshop</td>
-                    <td class="text-danger"> 28.76% <i class="ti-arrow-down"></i></td>
-                    <td><label class="badge badge-danger">Pending</label></td>
-                  </tr>
-                  <tr>
-                    <td>Messsy</td>
-                    <td>Flash</td>
-                    <td class="text-danger"> 21.06% <i class="ti-arrow-down"></i></td>
-                    <td><label class="badge badge-warning">In progress</label></td>
-                  </tr>
-                  <tr>
-                    <td>John</td>
-                    <td>Premier</td>
-                    <td class="text-danger"> 35.00% <i class="ti-arrow-down"></i></td>
-                    <td><label class="badge badge-info">Fixed</label></td>
-                  </tr>
-                  <tr>
-                    <td>Peter</td>
-                    <td>After effects</td>
-                    <td class="text-success"> 82.00% <i class="ti-arrow-up"></i></td>
-                    <td><label class="badge badge-success">Completed</label></td>
-                  </tr>
-                  <tr>
-                    <td>Dave</td>
-                    <td>53275535</td>
-                    <td class="text-success"> 98.05% <i class="ti-arrow-up"></i></td>
-                    <td><label class="badge badge-warning">In progress</label></td>
-                  </tr>
-                  <tr>
-                    <td>Messsy</td>
-                    <td>Flash</td>
-                    <td class="text-danger"> 21.06% <i class="ti-arrow-down"></i></td>
-                    <td><label class="badge badge-info">Fixed</label></td>
-                  </tr>
+                  <?php foreach ($getPemesanan as $p) : ?>
+                    <tr>
+                      <td><?= $p['nama_pelanggan']; ?></td>
+                      <td><?= $p['jenis_katalog']; ?></td>
+                      <td class="text-danger"> <?= $p['jumlah_katalog']; ?><i class="ti-arrow-up"></i></td>
+                      <td>
+                        <a class="badge badge-<?= $p['style']; ?>" href="<?= base_url('admin/pemesanan/detail/' . $p['id_pelanggan']) ?>">
+                          <?= $p['konfirmasi']; ?>
+                        </a>
+                        </td>
+                    </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>
@@ -214,7 +188,6 @@
             <div class="row">
               <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-center">
                 <div class="ml-xl-4">
-                  <h1>33500</h1>
                   <h3 class="font-weight-light mb-xl-4">Diagram Status Pemesanan</h3>
                   <p class="text-muted mb-2 mb-xl-0">Total diagram detail dari sebuah status pemesanan Buku Tahunan pada Pelanggan</p>
                 </div>

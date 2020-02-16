@@ -1,7 +1,7 @@
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
     <a class="navbar-brand brand-logo mr-5" href="<?= base_url('admin/Home'); ?>"><img src="<?= base_url('assets/images/profile/azhar.png'); ?>" class="mr-2" alt="logo" style="height:3.5rem;" /></a>
-    <a class="navbar-brand brand-logo-mini" href="<?= base_url('admin/Home'); ?>"><img src="<?= base_url('assets/images/profile/logo.jpg'); ?>" alt="logo" style="height:3rem; width:3rem;" /></a>
+    <a class="navbar-brand brand-logo-mini" href="<?= base_url('admin/Home'); ?>"><img src="<?= base_url('assets/images/profile/azhar.png'); ?>" alt="logo" style="height:3rem; width:3rem;" /></a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -30,6 +30,8 @@
           <?php endforeach; ?>
         </div>
       </li>
+      <div class="login" data-flashdata="<?= $this->session->flashdata('login'); ?>"></div>
+      <div class="success" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
       <li class="nav-item dropdown">
         <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
           <i class="ti-bell mx-0"></i>
@@ -88,7 +90,7 @@
             <i class="ti-user text-primary"></i>
             My Profile
           </a>
-          <a href="<?= base_url('admin/Auth/logout'); ?>" class="dropdown-item" data-toggle="modal" data-target="#logout">
+          <a href="<?= base_url('admin/Auth/logout'); ?>" class="dropdown-item" id="log-out">
             <i class="ti-power-off text-primary"></i>
             Logout
           </a>

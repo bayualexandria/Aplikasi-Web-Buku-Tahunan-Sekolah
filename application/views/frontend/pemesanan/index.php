@@ -101,7 +101,7 @@
                     <div class="tab-pane fade" id="nav-status" role="tabpanel" aria-labelledby="nav-status-tab">
                         <div class="container">
                             <?php $id = $user['id'];
-                            $query = "SELECT `tbl_pemesanan`.*,`tbl_katalog`.`jenis_katalog`,`tbl_status`.`konfirmasi`,`tbl_status`.`style` FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id`  JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` JOIN `tbl_bahan` ON `tbl_pemesanan`.`id_bahan`=`tbl_bahan`.`id` JOIN `tbl_status` ON `tbl_pemesanan`.`id_status`=`tbl_status`.`id` WHERE `tbl_pemesanan`.`id_pelanggan`=$id ORDER BY `tbl_pemesanan`.`date_created` DESC";
+                            $query = "SELECT `tbl_pemesanan`.*,`tbl_katalog`.`jenis_katalog`,`tbl_status`.`konfirmasi`,`tbl_status`.`status_pesan`,`tbl_status`.`style` FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id`  JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` JOIN `tbl_bahan` ON `tbl_pemesanan`.`id_bahan`=`tbl_bahan`.`id` JOIN `tbl_status` ON `tbl_pemesanan`.`id_status`=`tbl_status`.`id` WHERE `tbl_pemesanan`.`id_pelanggan`=$id ORDER BY `tbl_pemesanan`.`date_created` DESC";
                             $orderList = $this->db->query($query)->result_array(); ?>
                             <?php foreach ($orderList as $oL) : ?>
                                 <div class="row mt-2">
@@ -112,6 +112,7 @@
                                                 <small><?= date('d M', $oL['date_created']); ?></small>
                                             </div>
                                             <p class="mb-1 pt-3">Status Pemesanan</p>
+                                            <small><?= $oL['status_pesan'];?></small>
                                             <small class="badge badge-pill badge-<?= $oL['style']; ?>"><?= $oL['konfirmasi']; ?></small>
                                         </a>
                                     </div>

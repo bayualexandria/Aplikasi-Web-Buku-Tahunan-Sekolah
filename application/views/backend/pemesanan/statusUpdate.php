@@ -17,15 +17,18 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row mx-5">
+                       
                             <form action="" method="POST">
+                                <?= validation_errors(); ?>
                                 <input type="hidden" name="id" value="<?= $one['id'] ?>">
                                 <input type="hidden" name="id_katalog" value="<?= $one['id_katalog'] ?>">
                                 <input type="hidden" name="jumlah_katalog" value="<?= $one['jumlah_katalog'] ?>">
                                 <input type="hidden" name="total" value="<?= $one['total'] ?>">
                                 <input type="hidden" name="id_pelanggan" value="<?= $one['id_pelanggan'] ?>">
                                 <input type="hidden" name="nama_pelanggan" value="<?= $one['nama_pelanggan'] ?>">
+                                <input type="hidden" name="email_pelanggan" value="<?= $one['email_pelanggan']; ?>">
                                 <input type="hidden" name="id_bahan" value="<?= $one['id_bahan'] ?>">
+                                <div class="row ml-3">
                                 <div class="form-group">
                                     <label for="id_ukuran">Status Pemesanan</label>
                                     <select name="id_status" id="id_status" class="form-control">
@@ -37,9 +40,14 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
+                                </div>
+                                <div class="form-group ml-3">
+                                    <label for="exampleFormControlTextarea1">Pesan</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="pesan" rows="3"></textarea>
+                                </div>
                                 <button type="submit" class="btn btn-sm btn-primary">Update</button>
                             </form>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

@@ -74,14 +74,14 @@
                     <div class="col-md-6">
                       <h6>Status : <span class="badge badge-<?= $detail['style']; ?> badge-pill"><?= $detail['konfirmasi']; ?></span></h6>
                     </div>
-                    <?php if ($detail['konfirmasi'] == 'order') : ?>
+                    <?php if ($detail['konfirmasi'] == 'Order') : ?>
                     <div class="col-md">
                     <a href="<?= base_url('pemesanan/batal/' . $detail['id']) ?>" class="btn btn-block btn-danger">Batal Pemesanan</a>
                     </div>
                     <?php endif;?>
                   </div>
                 </li>
-                <?php if ($detail['konfirmasi'] == 'order') : ?>
+                <?php if ($detail['konfirmasi'] == 'Order') : ?>
                   <li class="list-group-item">
                     <a href="<?= base_url('pemesanan/update/' . $detail['id']) ?>" class="btn btn-block btn-info">Update Pemesanan</a>
                   </li>

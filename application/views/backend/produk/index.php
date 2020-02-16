@@ -50,7 +50,7 @@
                                             <td>
                                                 <!-- <i href=""><i class="text-secondary ti-eye menu-icon"></i></a> -->
                                                 <a href="<?= base_url('admin/produk/update/' . $produk->id) ?>"><i class="text-primary ti-pencil-alt2 menu-icon"></i></a>
-                                                <a href="<?= base_url('admin/produk/delete/' . $produk->id) ?>"><i class="text-danger ti-trash menu-icon"></i></a>
+                                                <a href="<?= base_url('admin/produk/delete/' . $produk->id) ?>" class="hapus"><i class="text-danger hapus ti-trash menu-icon"></i></a>
                                             </td>
 
                                         </tr>

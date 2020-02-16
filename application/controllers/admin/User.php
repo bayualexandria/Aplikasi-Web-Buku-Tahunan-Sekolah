@@ -33,8 +33,7 @@ class User extends CI_Controller
             $this->load->view('template/admin/footer');
         } else {
             $data = [
-                'name' => $this->input->post('name'),
-                'username' => $this->input->post('username')
+                'name' => $this->input->post('name')
             ];
             $email = $this->input->post('email');
 
@@ -92,7 +91,7 @@ class User extends CI_Controller
             $this->load->view('template/admin/header', $data);
             $this->load->view('template/admin/navbar', $data);
             $this->load->view('template/admin/sidebar');
-            $this->load->view('backend/user/index', $data);
+            $this->load->view('backend/user/update', $data);
             $this->load->view('template/admin/footer');
         } else {
             $password = $this->input->post('password');
@@ -105,8 +104,8 @@ class User extends CI_Controller
                 $this->db->set('password', $password_hash);
                 $this->db->where('email', $this->session->userdata('email'));
                 $this->db->update('users');
-                $this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Password Telah Di Ganti</div>');
-                redirect('admin/User');
+                $this->session->set_flashdata('message', '>Password Telah Di Ganti');
+                redirect('admin/Admin');
             }
         }
     }

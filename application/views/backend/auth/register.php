@@ -5,7 +5,7 @@
                 <div class="col-lg-4 mx-auto">
                     <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                         <div class="brand-logo text-center">
-                            <img src="<?= base_url('assets/web/img/azhar.png'); ?>" alt="logo">
+                            <img src="<?= base_url('assets/images/profile/azhar.png'); ?>" alt="logo">
                             <h4>Azharku Media</h4>
                         </div>
                         <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>

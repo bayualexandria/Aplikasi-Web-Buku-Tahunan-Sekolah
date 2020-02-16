@@ -54,13 +54,6 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="username" class="col-sm-2 col-form-label">Username</label>
-                                                    <div class="col-sm-10">
-                                                        <input id="username" class="form-control" type="text" name="username" value="<?= $user['username']; ?>">
-                                                        <?= form_error('username', '<small class="alert text-danger pl-0" role="alert" >', '</small>'); ?>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
                                                     <label for="name" class="col-sm-2 col-form-label">Nama Lengkap</label>
                                                     <div class="col-sm-10">
                                                         <input id="name" class="form-control" type="text" name="name" value="<?= $user['name']; ?>">

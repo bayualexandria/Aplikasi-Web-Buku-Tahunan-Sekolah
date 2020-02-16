@@ -1,5 +1,5 @@
 <div class="container-fluid page-body-wrapper">
-
+  <div class="success" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
       <li class="nav-item">
@@ -25,7 +25,7 @@
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="<?= base_url('admin/Admin'); ?>"> Data Admin </a></li>
             <li class="nav-item"> <a class="nav-link" href="<?= base_url('admin/Pelanggan'); ?>"> Data Pelanggan </a></li>
-            <li class="nav-item"> <a class="nav-link" href="<?= base_url('admin/pemesanan');?>">Data Pemesanan </a></li>
+            <li class="nav-item"> <a class="nav-link" href="<?= base_url('admin/pemesanan'); ?>">Data Pemesanan </a></li>
           </ul>
         </div>
       </li>
@@ -42,9 +42,9 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/Auth/logout') ?>" data-toggle="modal" data-target="#logout">
+        <a class="nav-link" href="<?= base_url('admin/Auth/logout') ?>" id="log-out">
           <i class="ti-power-off menu-icon"></i>
-          <span class="menu-title">Logout</span>
+          <span class="menu-title" id="log-out">Logout</span>
         </a>
       </li>
     </ul>

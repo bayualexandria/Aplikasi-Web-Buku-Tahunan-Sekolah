@@ -8,7 +8,6 @@ class Auth_model extends CI_Model
         $data = [
             'name' => htmlspecialchars($this->input->post('name', true)),
             'email' => htmlspecialchars($email),
-            'username' => 'Admin',
             'images' => 'default.jpg',
             'password' => password_hash($this->input->post('password'),PASSWORD_BCRYPT),
             'role_id' => 1,

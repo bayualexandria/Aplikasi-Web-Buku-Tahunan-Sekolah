@@ -1,6 +1,7 @@
 </div>
 
 <script src="<?= base_url('assets/bootstrap-4/js/jquery-3.3.1.js'); ?>"></script>
+<script src="<?= base_url('assets/bootstrap-4/js/jquery-3.4.1.min.js'); ?>"></script>
 <!-- <script src="<?= base_url('assets/bootstrap-4/js/bootstrap.min.js'); ?>"></script> -->
 <script src="<?= base_url('assets/admin/vendors/base/vendor.bundle.base.js'); ?>"></script>
 <script src="<?= base_url('assets/admin/js/off-canvas.js') ?>"></script>
@@ -10,7 +11,10 @@
 <script src="<?= base_url('assets/admin/js/pilih.js') ?>"></script>
 <script src="<?= base_url('assets/admin/vendors/chart.js/Chart.min.js'); ?>"></script>
 <script src="<?= base_url('assets/admin/js/dashboard.js'); ?>"></script>
+<script src="<?= base_url() ?>assets/vendors/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script src="<?= base_url() ?>assets/vendors/sweetalert/js/script.js"></script>
 <script>
+
 	$(".pesan").on('click', function() {
 		$(this).next('.aktif').addClass('ti-angle-right');
 	});

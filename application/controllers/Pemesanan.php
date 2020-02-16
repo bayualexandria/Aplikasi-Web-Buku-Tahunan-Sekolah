@@ -53,8 +53,38 @@ class Pemesanan extends CI_Controller
     public function insertPemesanan()
     {
         $this->Pemesanan_model->insertPemesanan();
+        $this->_sendEmail();
         $this->session->set_flashdata('success', 'Terima kasih! Orderan anda telah diterima.');
         redirect('Pemesanan');
+    }
+
+    private function _sendEmail()
+    {
+        $data['user'] = $this->db->get_where('pelanggan', ['email_pelanggan' => $this->session->userdata('email_pelanggan')])->row_array();
+        $config = [
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_user' => 'wardanabayu508@gmail.com',
+            'smtp_pass' => 'Wardana229813',
+            'smtp_port' => 465,
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'newline' => "\r\n"
+        ];
+
+        $this->email->initialize($config);
+
+        $this->email->from('wardanabayu508@gmail.com', 'Administrator');
+        $this->email->to($data['user']['email_pelanggan']);
+        $this->email->subject('Message User');
+        $this->email->message('<img style="text-align:center" src="https://bayuwardana.000webhostapp.com/Ta-Fungki/assets/web/img/azhar.png"/ width="50%"><br/><b style="text-align:center">Pemberitahuan Status Pemesanan Buku Tahunan Di CV. Azharku Media<b/><br/>Kepada :' . $data['user']['name'] . '<br/><br/><b>Terima Kasih Anda Telah Melakukan Pemesenan <br/>Dengan Status Pemesanan Dalam Pengorderan Untuk Pembuatan Buku Tahunan</b>');
+
+        if ($this->email->send()) {
+            return true;
+        } else {
+            echo $this->email->print_debugger();
+            die;
+        }
     }
 
     public function detail($id)
