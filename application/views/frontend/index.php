@@ -57,8 +57,8 @@
                 </div>
                 <div class="col-md-7 col-sm-12 col-xs-12">
                     <h2>Our History</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ip sum has been the industry's standard dummy text ever since the 1500s, when an unk- nown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p>Setiap kebersamaan pasti akan berakhir, tapi kebahagiaannya akan tetap abadi dalam kenangan indah kita. Kebersamaan itu mahal dan tak ternilai harganya. Maka beruntunglah bagi orang-orang yang mampu membelinya. Yaitu orang-orang yang peduli pada kebersamaan dengan keluarga dan orang terdekatnya.</p>
+                    <p>Perjalanan jauh yang di isi dengan kebersamaan pasti akan terasa singkat dan menyenangkan. Aku sangat menyukai kebersamaan karena kebersamaan mengajarkan kita tentang suka dan duka di lalui bersama.</p>
                     <a href="about.html" class="button">Browse Our Work</a>
                 </div>
             </div>
@@ -77,20 +77,20 @@
                     <div class="case-study--left__textslider">
                         <div>
                             <div class="case-study--left__textslider__image"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></div>
-                            <h4>Accumulate creative ideas</h4>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ip sum has been the industry's standard dummy text ever since the 1500s, when an unk- nown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <h4>Accumulate creative ideas (IPA 3 CREATIVE DIGITAL)</h4>
+                            <p></p>
                             <a href="#" class="button small">Read More</a>
                         </div>
                         <div>
                             <div class="case-study--left__textslider__image"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></div>
-                            <h4>Accumulate creative ideas</h4>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ip sum has been the industry's standard dummy text ever since the 1500s, when an unk- nown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <h4>Accumulate creative ideas (MIPA 6 CREATIVE DIGITAL)</h4>
+                           <p></p>
                             <a href="#" class="button small">Read More</a>
                         </div>
                         <div>
                             <div class="case-study--left__textslider__image"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></div>
-                            <h4>Accumulate creative ideas</h4>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ip sum has been the industry's standard dummy text ever since the 1500s, when an unk- nown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <h4>Accumulate creative ideas (IPS 4 CREATIVE DIGITAL)</h4>
+                           <p></p>
                             <a href="#" class="button small">Read More</a>
                         </div>
                     </div>
@@ -99,13 +99,13 @@
                 <div class="case-study--right">
                     <div class="case-study--right__imageslider">
                         <div>
-                            <img src="<?= base_url(); ?>assets/web/assets/img/case.jpg" alt="" />
+                            <img src="<?= base_url(); ?>assets/images/ipa.jpg" alt="" />
                         </div>
                         <div>
-                            <img src="<?= base_url(); ?>assets/web/assets/img/case.jpg" alt="" />
+                            <img src="<?= base_url(); ?>assets/images/ipa2.jpg" alt="" />
                         </div>
                         <div>
-                            <img src="<?= base_url(); ?>assets/web/assets/img/case.jpg" alt="" />
+                            <img src="<?= base_url(); ?>assets/images/ips.jpg" alt="" />
                         </div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
         </div>
     </section>
 
-    <section class="partners">
+    <!-- <section class="partners">
         <div class="container">
             <h2>Great Integrations with Others</h2>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -171,4 +171,4 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
