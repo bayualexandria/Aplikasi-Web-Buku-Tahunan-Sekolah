@@ -127,8 +127,7 @@ class Auth extends CI_Controller
                 'images' => 'default.jpg',
                 'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
                 'role_id' => 2,
-                'is_active' => 0,
-                'date_created' => time()
+                'is_active' => 0
             ];
 
             $token = base64_encode(random_bytes(32));
