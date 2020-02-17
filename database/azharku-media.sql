@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2020 at 04:41 PM
+-- Generation Time: Feb 17, 2020 at 07:42 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -72,6 +72,13 @@ CREATE TABLE `message` (
   `date_send` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`id`, `name`, `email`, `mess`, `logo`, `date_send`) VALUES
+(1, 'Bayu Wardana', 'wardanabayu455@gmail.com', 'Hay', 'IMG_20180122_160025_5322.jpg', 1581852179);
+
 -- --------------------------------------------------------
 
 --
@@ -96,7 +103,9 @@ CREATE TABLE `pelanggan` (
 
 INSERT INTO `pelanggan` (`id`, `name`, `alamat`, `no_hp`, `images`, `email_pelanggan`, `password`, `role_id`, `is_active`) VALUES
 (5, 'Pandu Setiawan', 'Jl. Samuel No. 50, Dolog. Kel. Mandala. Kab. Biak Numfor. Biak-Papua', '082238166972', 'BD0CE3DE-07DE-43A9-B0ED-7092D8C7CE53.jpg', 'pandu@gmail.com', '$2y$10$2cHeMiW9PKb1yJFT8vNbEurDc0zSAF/np7W5tbCkvIe2/s2n0qCUG', 2, 1),
-(7, 'Bayu Wardana', 'Jln. Samuel no.50, Dolog. Kel. Mandala. Kab. Biak Kota. Prov. Biak Numfor. Biak-Papua', '081316146399', 'IMG_20180122_160025_5322.jpg', 'wardanabayu455@gmail.com', '$2y$10$4BqbD2s.ju9kn1fgGg3YR.jVKoyQCdgOQpyAhSLE2KXrunx0AWtrK', 2, 1);
+(7, 'Bayu Wardana', 'Jln. Samuel no.50, Dolog. Kel. Mandala. Kab. Biak Kota. Prov. Biak Numfor. Biak-Papua', '081316146399', 'IMG_20180122_160025_5323.jpg', 'wardanabayu45@gmail.com', '$2y$10$4BqbD2s.ju9kn1fgGg3YR.jVKoyQCdgOQpyAhSLE2KXrunx0AWtrK', 2, 1),
+(9, 'Bayu Wardana', 'Dolog', '081316146399', 'default.jpg', 'wardanabayu455@gmail.com', '$2y$10$ja3pgtM3HxQNXhndb7O31ubiaWiqlBc5pVRp7m1hJ6IYy8IP6tM7C', 2, 1),
+(12, 'Anwar', 'Kendal', '08978676756', 'default.png', 'andewhae@gmail.com', '$2y$10$p1O6ocmg.axPCGMS4QRqOu2ybaGdHWrmR2aIXfC5mjSALam.vnBai', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -130,8 +139,7 @@ INSERT INTO `tbl_bahan` (`id`, `id_katalog`, `bahan_kertas`, `ukuran`, `halaman`
 (3, 2, 'CTS Art Paper 150 gr', '21.5 cm x30 cm', '80 Halaman', 'Hard Cover Doff', 'Jahit Hot Bending', 'Full Color', 'CD', 'Sejumlah Siswa Akhir', '15 Katalog untuk sekolah', 125000, 'prem'),
 (4, 1, 'Ivony Art Carton 210 gr', '21.5 cm x 30 cm', '80 Halaman', 'Hard Cover Doff', 'Jahit Hot Bending', 'Full Color', 'CD', 'Sejumlah Siswa Akhir', '15 Katalog untuk sekolah', 180000, ''),
 (5, 1, 'Ivony Art Carton 190 gr', '21.5 cm x30 cm', '80 Halaman', 'Hard Cover Doff', 'Jahit Hot Bending', 'Full Color', 'CD', 'Sejumlah Siswa Akhir', '15 Katalog untuk sekolah', 170000, 'starred'),
-(6, 1, 'CTS Art Paper 150 gr', '21.5 cm x 30 cm', '80 Halaman', 'Hard Cover Doff', 'Jahit Hot Bending', 'Full Color', 'CD', 'Sejumlah Siswa Akhir', '15 Katalog untuk sekolah', 160000, 'prem'),
-(8, 1, 'olinol', 'uiyiuy', '80 halaman', 'uiy', 'iuy', 'iu', 'yi', 'Sejumlah Siswa Akhir', '15 Katalog untuk sekolah', 120000, 'starred');
+(6, 1, 'CTS Art Paper 150 gr', '21.5 cm x 30 cm', '80 Halaman', 'Hard Cover Doff', 'Jahit Hot Bending', 'Full Color', 'CD', 'Sejumlah Siswa Akhir', '15 Katalog untuk sekolah', 160000, 'prem');
 
 -- --------------------------------------------------------
 
@@ -176,12 +184,12 @@ CREATE TABLE `tbl_pemesanan` (
 --
 
 INSERT INTO `tbl_pemesanan` (`id`, `nama_pelanggan`, `id_pelanggan`, `id_katalog`, `id_bahan`, `jumlah_katalog`, `total`, `id_status`, `date_created`, `date_updated`) VALUES
-(29, 'Pandu Setiawan', 5, 2, 3, 2, 250000, 2, 1581590155, NULL),
-(43, 'Bayu Wardana', 7, 2, 2, 1, 150000, 4, 1581576061, NULL),
-(44, 'Bayu Wardana', 7, 2, 3, 2, 250000, 1, 1581576597, NULL),
-(45, 'Bayu Wardana', 7, 2, 1, 1, 150000, 2, 1581577490, NULL),
-(46, 'Pandu Setiawan', 5, 1, 5, 4, 680000, 2, 1581590116, NULL),
-(47, 'Bayu Wardana', 7, 2, 3, 3, 375000, 5, 1581603116, NULL);
+(53, 'Bayu Wardana', 7, 2, 2, 12, 1680000, 2, 1581854945, NULL),
+(54, 'Bayu Wardana', 7, 2, 2, 12, 1680000, 1, 1581854837, NULL),
+(55, 'Pandu Setiawan', 5, 2, 2, 250, 35000000, 2, 1581855492, NULL),
+(56, 'Pandu Setiawan', 5, 2, 3, 1, 125000, 1, 1581855527, NULL),
+(58, 'Bayu Wardana', 7, 2, 1, 125, 18750000, 5, 1581857259, NULL),
+(59, 'Bayu Wardana', 7, 2, 3, 100, 12500000, 5, 1581857455, NULL);
 
 -- --------------------------------------------------------
 
@@ -192,19 +200,20 @@ INSERT INTO `tbl_pemesanan` (`id`, `nama_pelanggan`, `id_pelanggan`, `id_katalog
 CREATE TABLE `tbl_status` (
   `id` int(11) NOT NULL,
   `konfirmasi` varchar(50) NOT NULL,
-  `style` varchar(50) NOT NULL
+  `style` varchar(50) NOT NULL,
+  `status_pesan` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_status`
 --
 
-INSERT INTO `tbl_status` (`id`, `konfirmasi`, `style`) VALUES
-(1, 'Batal', 'danger'),
-(2, 'Selesai', 'success'),
-(3, 'Tahap Penyelesaian 50 %', 'warning'),
-(4, 'Proses', 'primary'),
-(5, 'order', 'secondary');
+INSERT INTO `tbl_status` (`id`, `konfirmasi`, `style`, `status_pesan`) VALUES
+(1, 'Batal', 'danger', 'Status Pemesanan Telah Di Batalkan'),
+(2, 'Selesai', 'success', 'Status Pemesanan Telah Selesai'),
+(3, 'Tahap Penyelesaian 50 %', 'warning', 'Status Pemesanan Dalam Pemrosesan 50%'),
+(4, 'Proses', 'primary', 'Status Pemesanan Dalam Pemrosesan'),
+(5, 'Order', 'secondary', 'Status Pemesanan Dalam Pengorderan');
 
 -- --------------------------------------------------------
 
@@ -235,7 +244,6 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `images` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(256) NOT NULL,
   `role_id` int(11) NOT NULL,
@@ -247,8 +255,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `images`, `username`, `email`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(27, 'Bayu Wardana', 'IMG_20180122_160025_5321.jpg', 'Admin', 'wardanabayu55@gmail.com', '$2y$10$btkaQ673w5pVjsrwEblkmuGHP.VCbPZnfVuQy71VXwJiC6HOjfrpK', 1, 1, 1568073273);
+INSERT INTO `users` (`id`, `name`, `images`, `email`, `password`, `role_id`, `is_active`, `date_created`) VALUES
+(27, 'Bayu Wardana', 'IMG_20180122_160025_5321.jpg', 'wardanabayu55@gmail.com', '$2y$10$btkaQ673w5pVjsrwEblkmuGHP.VCbPZnfVuQy71VXwJiC6HOjfrpK', 1, 1, 1568073273),
+(28, 'Alexandria', 'auth1.png', 'administrator@gmail.com', '$2y$10$kmKxLJ5redRJKWlDvdeqGuMBTpGETMErK.1mt2MAxhw5BKY5WrDtm', 1, 1, 1581781385);
 
 -- --------------------------------------------------------
 
@@ -262,6 +271,14 @@ CREATE TABLE `users_token` (
   `token` varchar(256) NOT NULL,
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users_token`
+--
+
+INSERT INTO `users_token` (`id`, `email`, `token`, `date_created`) VALUES
+(1, 'andewhae@gmail.com', 'T38dI/zYPvnwy2wzEIEf9FuRq7ym9Slrhi1PLUhwxj0=', 1581914312),
+(2, 'yusufmuhamad713@gmail.com', 'Q93IEB6U7uRqiJvGgOQquUSZeBvO7hQ37LwL+//3+PE=', 1581914361);
 
 --
 -- Indexes for dumped tables
@@ -347,19 +364,19 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_bahan`
 --
 ALTER TABLE `tbl_bahan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_katalog`
@@ -371,7 +388,7 @@ ALTER TABLE `tbl_katalog`
 -- AUTO_INCREMENT for table `tbl_pemesanan`
 --
 ALTER TABLE `tbl_pemesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `tbl_status`
@@ -389,13 +406,13 @@ ALTER TABLE `tbl_user_role`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `users_token`
 --
 ALTER TABLE `users_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
