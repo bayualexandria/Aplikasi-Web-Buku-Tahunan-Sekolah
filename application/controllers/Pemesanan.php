@@ -39,6 +39,8 @@ class Pemesanan extends CI_Controller
         $data['description'] = 'Halaman Order Buku Tahunan Sekolah';
         $data['produck'] = $this->Pemesanan_model->bahan($id);
 
+        // ================================= START ============================
+        //=================== WHITE BOX TESTING ===============================
         // Melakukan validasi terhadap jumlah katalog dan yang di masukan 
         $this->form_validation->set_rules('jumlah_katalog', 'Jumlah Katalog', 'required|trim');
 
@@ -64,6 +66,8 @@ class Pemesanan extends CI_Controller
         // reidrect ke halaman index
         redirect('Pemesanan');
     }
+
+    // ================================== END =======================================
 
     private function _sendEmail()
     {
