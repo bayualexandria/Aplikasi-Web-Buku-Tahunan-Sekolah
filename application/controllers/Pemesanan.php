@@ -39,22 +39,29 @@ class Pemesanan extends CI_Controller
         $data['description'] = 'Halaman Order Buku Tahunan Sekolah';
         $data['produck'] = $this->Pemesanan_model->bahan($id);
 
+        // Melakukan validasi terhadap jumlah katalog dan yang di masukan 
         $this->form_validation->set_rules('jumlah_katalog', 'Jumlah Katalog', 'required|trim');
 
+        // Jika data validasi yang di masukan benar maka akan melakukan insert data ke tabel pemesanan jika tidak maka akan menampilkan pesan kesalahan
         if ($this->form_validation->run() == false) {
             $this->load->view('frontend/auth/template/header', $data);
             $this->load->view('frontend/pemesanan/order', $data);
             $this->load->view('frontend/auth/template/footer');
         } else {
+            // link ke function insertPemesanan();
             $this->insertPemesanan();
         }
     }
 
     public function insertPemesanan()
     {
+        // Proses insert data ke Model Pemesanan
         $this->Pemesanan_model->insertPemesanan();
+        // Pengiriman notifikasi pesan ke email tujuan
         $this->_sendEmail();
+        // Pesan pop-up data pemesanan telah diterima
         $this->session->set_flashdata('success', 'Terima kasih! Orderan anda telah diterima.');
+        // reidrect ke halaman index
         redirect('Pemesanan');
     }
 
