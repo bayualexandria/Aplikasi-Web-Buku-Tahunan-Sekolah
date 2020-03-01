@@ -1,14 +1,16 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row mb-3">
-            <div class="col-md-3">
+            <div class="col-md-5">
                 <div class="input-group">
-                    <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                        <span class="input-group-text" id="search">
-                            <i class="ti-search"></i>
-                        </span>
-                    </div>
-                    <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+                    <form action="<?= base_url('admin/Produk'); ?>" method="POST">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search keyword" name="keyword">
+                            <div class="input-group-append" autocomplete="off" autofocus>
+                                <input class="btn btn-outline-primary" type="submit" value="Search" name="submit">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -37,11 +39,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $i = 1;
-                                    foreach ($produks->result() as $produk) : ?>
+                                    <?php if (empty($produks->result())) : ?>
+                                        <tr class=" text-center">
+                                            <td colspan="8" class="col-md">
+                                                <div class=" justify-content-center alert alert-danger" role="alert">
+                                                    Data Not Found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php foreach ($produks->result() as $produk) : ?>
                                         <tr>
-                                            <td><?= $i++; ?></td>
-                                            <td><?= $produk->jenis_katalog; ?></td>
+                                            <td><?= ++$start; ?></td>
+                                            <td>
+                                                <?php $id = $produk->id_katalog;
+                                                $query = "SELECT `tbl_katalog`.*  FROM `tbl_bahan` JOIN `tbl_katalog` ON `tbl_bahan`.`id_katalog`=`tbl_katalog`.`id` WHERE `tbl_katalog`.`id`=$id";
+                                                $Katalog = $this->db->query($query)->row_array();
+                                                ?>
+                                                <?= $Katalog['jenis_katalog']; ?>
+                                            </td>
                                             <td><?= $produk->bahan_kertas; ?></td>
                                             <td><?= $produk->ukuran; ?></td>
                                             <td><?= $produk->halaman; ?></td>
@@ -57,6 +73,7 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <?= $this->pagination->create_links(); ?>
                         </div>
                     </div>
                 </div>

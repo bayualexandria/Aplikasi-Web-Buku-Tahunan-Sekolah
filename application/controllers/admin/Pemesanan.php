@@ -6,17 +6,35 @@ class Pemesanan extends  CI_Controller
     {
         parent::__construct();
         $this->load->model('Pemesanan_model');
+        $this->load->model('Pelanggan_model');
         $this->load->model('Home_model');
+        $this->load->library('pdf');
         is_logged_in();
     }
     public function index()
     {
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-        $data['All'] = $this->Pemesanan_model->getPemesanan();
         $data['title'] = 'Data Pemesanan Buku Tahunan Sekolah';
         $data['message'] = $this->Home_model->getMessage();
         $data['message3'] = $this->Home_model->getMessage3();
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            $data['keyword'] = $this->session->userdata('keyword');
+        }
 
+        $config['base_url'] = 'http://localhost/ta/admin/Pemesanan/index';
+        $this->db->like('name', $data['keyword']);
+        $this->db->or_like('no_hp', $data['keyword']);
+        $this->db->or_like('alamat', $data['keyword']);
+        $this->db->from('pelanggan');
+        $config['total_rows'] = $this->db->count_all_results();
+        $config['per_page'] = 5;
+
+        $this->pagination->initialize($config);
+        $data['start'] = $this->uri->segment(4);
+        $data['All'] = $this->Pemesanan_model->getPemesananAll($config['per_page'], $data['start'], $data['keyword']);
         $this->load->view('Template/Admin/header', $data);
         $this->load->view('Template/Admin/navbar', $data);
         $this->load->view('Template/Admin/sidebar');
@@ -55,6 +73,7 @@ class Pemesanan extends  CI_Controller
     {
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
         $data['All'] = $this->Pemesanan_model->detail($id);
+        $data['detail'] = $this->db->get_where('pelanggan', ['id' => $id])->row_array();
         $data['message'] = $this->Home_model->getMessage();
         $data['message3'] = $this->Home_model->getMessage3();
 
@@ -193,5 +212,14 @@ class Pemesanan extends  CI_Controller
             $this->session->set_flashdata('success', 'Pemesanan Telah Diubah');
             redirect('admin/Pemesanan');
         }
+    }
+
+    public function laporan_pdf($id)
+    {
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $data['pelanggan'] = $this->Pelanggan_model->getById($id);
+        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->filename = 'laporan_pemesanan.pdf';
+        $this->pdf->load_view('backend/pemesanan/laporan_pdf', $data);
     }
 }

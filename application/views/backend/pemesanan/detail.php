@@ -1,14 +1,35 @@
 <div class="main-panel">
     <div class="content-wrapper">
-        <div class="row mb-3">
-            <div class="col-md-3">
+        <div>
+            <h4 class="font-weight-bold mb-3">Data Pemesanan</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
                 <div class="input-group">
-                    <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                        <span class="input-group-text" id="search">
-                            <i class="ti-search"></i>
-                        </span>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Nama Pelanggan</span>
                     </div>
-                    <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+                    <input type="text" aria-label="First name" class="form-control" value="<?= $detail['name']; ?>" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">No Handphone</span>
+                    </div>
+                    <input type="text" aria-label="First name" class="form-control" value="<?= $detail['no_hp']; ?>" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Alamat</span>
+                    </div>
+                    <input type="text" aria-label="First name" class="form-control" value="<?= $detail['alamat']; ?>" readonly>
                 </div>
             </div>
         </div>

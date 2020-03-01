@@ -1,10 +1,17 @@
 <?php
 
+use phpDocumentor\Reflection\Types\This;
+
 class Home_model extends CI_Model
 {
     public function numPelanggan()
     {
         return $this->db->get('pelanggan')->num_rows();
+    }
+
+    public function selesai()
+    {
+        return $this->db->get_where('tbl_pemesanan', ['id_status' => 2])->num_rows();
     }
 
     public function numMessage()
@@ -23,7 +30,7 @@ class Home_model extends CI_Model
     }
     public function getPemesanan()
     {
-        $query = "SELECT `tbl_pemesanan`.*,`tbl_status`.`konfirmasi`,`tbl_status`.`style`,`tbl_katalog`.`jenis_katalog` FROM `tbl_pemesanan` INNER JOIN `tbl_status` ON `tbl_pemesanan`.`id_status`=`tbl_status`.`id` INNER JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id`";
+        $query = "SELECT `tbl_pemesanan`.*,`tbl_status`.`konfirmasi`,`tbl_status`.`style`,`tbl_katalog`.`jenis_katalog` FROM `tbl_pemesanan` INNER JOIN `tbl_status` ON `tbl_pemesanan`.`id_status`=`tbl_status`.`id` INNER JOIN `tbl_katalog` ON `tbl_pemesanan`.`id_katalog`=`tbl_katalog`.`id` ORDER BY `tbl_pemesanan`.`date_created` DESC LIMIT 8";
         return $this->db->query($query)->result_array();
     }
     public function Company()

@@ -41,15 +41,18 @@ class Pemesanan extends CI_Controller
 
         // ================================= START ============================
         //=================== WHITE BOX TESTING ===============================
+        // Step 1
         // Melakukan validasi terhadap jumlah katalog dan yang di masukan 
         $this->form_validation->set_rules('jumlah_katalog', 'Jumlah Katalog', 'required|trim');
 
+        // Step 2
         // Jika data validasi yang di masukan benar maka akan melakukan insert data ke tabel pemesanan jika tidak maka akan menampilkan pesan kesalahan
         if ($this->form_validation->run() == false) {
             $this->load->view('frontend/auth/template/header', $data);
             $this->load->view('frontend/pemesanan/order', $data);
             $this->load->view('frontend/auth/template/footer');
         } else {
+            // Step 3
             // link ke function insertPemesanan();
             $this->insertPemesanan();
         }
@@ -57,13 +60,15 @@ class Pemesanan extends CI_Controller
 
     public function insertPemesanan()
     {
+        // Step 4
         // Proses insert data ke Model Pemesanan
         $this->Pemesanan_model->insertPemesanan();
+        // Step 5
         // Pengiriman notifikasi pesan ke email tujuan
         $this->_sendEmail();
-        // Pesan pop-up data pemesanan telah diterima
+        // Step 6
+        // Pesan pop-up data pemesanan telah diterima reidrect ke halaman index
         $this->session->set_flashdata('success', 'Terima kasih! Orderan anda telah diterima.');
-        // reidrect ke halaman index
         redirect('Pemesanan');
     }
 

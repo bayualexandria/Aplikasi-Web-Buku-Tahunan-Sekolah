@@ -41,11 +41,30 @@
           <span class="menu-title">Tentang Perusahaan</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/Auth/logout') ?>" id="log-out">
+      <li class="nav-item" id="log-out">
+        <a class="nav-link" href="<?= base_url('admin/Auth/logout') ?>" id="logout">
           <i class="ti-power-off menu-icon"></i>
           <span class="menu-title" id="log-out">Logout</span>
         </a>
       </li>
     </ul>
   </nav>
+  <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Logout</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        Apakah Anda Yakin Ingin Logout?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+        <a href="<?= base_url('admin/Auth/logout') ?>" class="btn btn-primary">Ya</a>
+      </div>
+    </div>
+  </div>
+</div>

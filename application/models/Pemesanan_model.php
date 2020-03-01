@@ -7,6 +7,15 @@ class Pemesanan_model extends  CI_Model
 
         return $this->db->get('pelanggan');
     }
+    public function getPemesananAll($limit, $start, $keyword = null)
+    {
+        if ($keyword) {
+            $this->db->like('name', $keyword);
+            $this->db->or_like('no_hp', $keyword);
+            $this->db->or_like('alamat', $keyword);
+        }
+        return $this->db->get('pelanggan', $limit, $start);
+    }
 
     public function status($id)
     {

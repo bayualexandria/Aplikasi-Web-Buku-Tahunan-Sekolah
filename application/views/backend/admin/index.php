@@ -1,14 +1,16 @@
 <div class="main-panel">
   <div class="content-wrapper">
     <div class="row mb-3">
-      <div class="col-md-3">
+      <div class="col-md-5">
         <div class="input-group">
-          <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-            <span class="input-group-text" id="search">
-              <i class="ti-search"></i>
-            </span>
-          </div>
-          <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+          <form action="<?= base_url('admin/Admin'); ?>" method="POST">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search keyword" name="keyword">
+              <div class="input-group-append" autocomplete="off" autofocus>
+                <input class="btn btn-outline-primary" type="submit" value="Search" name="submit">
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -34,11 +36,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php $i = 1;
+                  <?php if (empty($admin->result())) : ?>
+                    <tr class=" text-center">
+                      <td colspan="8" class="col-md">
+                        <div class=" justify-content-center alert alert-danger" role="alert">
+                          Data Not Found
+                        </div>
+                      </td>
+                    </tr>
+                  <?php endif; ?>
+                  <?php
                   foreach ($admin->result() as $a) : ?>
                     <tr>
 
-                      <td><?= $i++; ?></td>
+                      <td><?= ++$start; ?></td>
                       <td><?= $a->name; ?></td>
                       <td><?= $a->email; ?></td>
                       <td>
@@ -62,6 +73,7 @@
                   <?php endforeach; ?>
                 </tbody>
               </table>
+              <?= $this->pagination->create_links(); ?>
             </div>
           </div>
         </div>
@@ -107,7 +119,7 @@
             <input type="password" name="password2" id="password2" class="form-control">
           </div>
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" name="is_active" class="custom-control-input"  value="1" id="customCheck1" checked>
+            <input type="checkbox" name="is_active" class="custom-control-input" value="1" id="customCheck1" checked>
             <label class="custom-control-label" for="customCheck1">is active?</label>
           </div>
       </div>

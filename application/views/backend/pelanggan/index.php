@@ -1,20 +1,22 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row mb-3">
-            <div class="col-md-3">
+            <div class="col-md-5">
                 <div class="input-group">
-                    <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                        <span class="input-group-text" id="search">
-                            <i class="ti-search"></i>
-                        </span>
-                    </div>
-                    <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+                    <form action="<?= base_url('admin/Pelanggan'); ?>" method="POST">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search keyword" name="keyword">
+                            <div class="input-group-append" autocomplete="off" autofocus>
+                                <input class="btn btn-outline-primary" type="submit" value="Search" name="submit">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-12 grid-margin stretch-card">
+            <div class="col-md grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title"><?= $title; ?></h4>
@@ -22,7 +24,6 @@
                             <a href="" data-toggle="modal" data-target="#add" class="btn-rounded btn-success btn-sm" style="text-decoration:none;"><i class="ti-plus menu-icon"></i> Tambah Data Pelanggan</a>
                         </p>
                         <div class="table-responsive">
-                            <?= validation_errors(); ?>
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -37,10 +38,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $i = 1;
-                                    foreach ($pelanggan->result() as $a) : ?>
+                                    <?php if (empty($pelanggan->result())) : ?>
+                                        <tr class=" text-center">
+                                            <td colspan="8" class="col-md">
+                                                <div class=" justify-content-center alert alert-danger" role="alert">
+                                                    Data Not Found
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php foreach ($pelanggan->result() as $a) : ?>
                                         <tr>
-                                            <td><?= $i++; ?></td>
+                                            <td><?= ++$start; ?></td>
                                             <td><?= $a->name; ?></td>
                                             <td><?= $a->alamat; ?></td>
                                             <td><?= $a->no_hp; ?></td>
@@ -66,6 +75,7 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <?= $this->pagination->create_links(); ?>
                         </div>
                     </div>
                 </div>
@@ -81,10 +91,6 @@
 </div>
 
 </div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary">
-    Launch demo modal
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

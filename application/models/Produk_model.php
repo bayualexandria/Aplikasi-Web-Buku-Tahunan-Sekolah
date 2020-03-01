@@ -7,6 +7,26 @@ class Produk_model extends CI_Model
         $query = "SELECT `tbl_bahan`.*,`tbl_katalog`.`jenis_katalog` FROM `tbl_bahan` JOIN `tbl_katalog` ON `tbl_bahan`.`id_katalog`=`tbl_katalog`.`id`";
         return $this->db->query($query);
     }
+    public function getProduks($limit, $start, $keyword = null)
+    {
+        if ($keyword) {
+            $this->db->like('harga', $keyword);
+            $this->db->or_like('bonus', $keyword);
+            $this->db->or_like('pemesanan', $keyword);
+            $this->db->or_like('dokFile', $keyword);
+            $this->db->or_like('cetakan', $keyword);
+            $this->db->or_like('finishing', $keyword);
+            $this->db->or_like('cover', $keyword);
+            $this->db->or_like('halaman', $keyword);
+            $this->db->or_like('ukuran', $keyword);
+            $this->db->or_like('bahan_kertas', $keyword);
+        }
+        return $this->db->get('tbl_bahan', $limit, $start);
+    }
+    public function countProduk()
+    {
+        return $this->db->get('tbl_bahan')->num_rows();
+    }
     public function getIdProduk($id)
     {
         $query = "SELECT `tbl_bahan`.*,`tbl_katalog`.`jenis_katalog` FROM `tbl_bahan` JOIN `tbl_katalog` ON `tbl_bahan`.`id_katalog`=`tbl_katalog`.`id` WHERE `tbl_bahan`.`id`=$id";

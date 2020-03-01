@@ -1,14 +1,16 @@
 <div class="main-panel">
   <div class="content-wrapper">
     <div class="row mb-3">
-      <div class="col-md-3">
+      <div class="col-md-5">
         <div class="input-group">
-          <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-            <span class="input-group-text" id="search">
-              <i class="ti-search"></i>
-            </span>
-          </div>
-          <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+          <form action="<?= base_url('admin/Pemesanan'); ?>" method="POST">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search keyword" name="keyword">
+              <div class="input-group-append" autocomplete="off" autofocus>
+                <input class="btn btn-outline-primary" type="submit" value="Search" name="submit">
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -26,25 +28,43 @@
                     <th>Nama Pelanggan</th>
                     <th>Alamat</th>
                     <th>No Handphone</th>
+                    <th>Aksi</th>
 
                   </tr>
                 </thead>
                 <tbody>
-                  <?php $i = 1;
-                  foreach ($All->result() as $psn) : ?>
+                  <?php if (empty($All->result())) : ?>
+                    <tr class=" text-center">
+                      <td colspan="8" class="col-md">
+                        <div class=" justify-content-center alert alert-danger" role="alert">
+                          Data Not Found
+                        </div>
+                      </td>
+                    </tr>
+                  <?php endif; ?>
+                  <?php foreach ($All->result() as $psn) : ?>
 
                     <tr>
-                      <td><?= $i++; ?></td>
+                      <td><?= ++$start; ?></td>
                       <td><?= $psn->name; ?></td>
                       <td><?= $psn->alamat; ?></td>
                       <td><?= $psn->no_hp; ?></td>
                       <td>
-                        <a href="<?= base_url('admin/pemesanan/detail/' . $psn->id) ?>"><i class="ti-eye text-primary"></i></a>
+                        <?php $id = $psn->id;
+                        $query = "SELECT `tbl_pemesanan`.* FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id` WHERE `tbl_pemesanan`.`id_pelanggan`=$id";
+                        $detail = $this->db->query($query)->row_array(); ?>
+                        <?php if ($detail['id_pelanggan'] && $detail['id_status'] == 2) : ?>
+                          <a href="<?= base_url('admin/pemesanan/detail/' . $psn->id) ?>"><i class="ti-eye text-primary"></i></a>
+                          <a href="<?= base_url('admin/Pemesanan/laporan_pdf/' . $detail['id_pelanggan']) ?>" class="badge badge-success">Laporan <i class="ti-file"></i></a>
+                        <?php elseif ($detail['id_pelanggan']) : ?>
+                          <a href="<?= base_url('admin/pemesanan/detail/' . $psn->id) ?>"><i class="ti-eye text-primary"></i></a>
+                        <?php endif; ?>
                       </td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>
               </table>
+              <?= $this->pagination->create_links(); ?>
             </div>
           </div>
         </div>

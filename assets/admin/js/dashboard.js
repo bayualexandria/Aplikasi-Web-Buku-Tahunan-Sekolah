@@ -1,100 +1,13 @@
 (function ($) {
 	'use strict';
 	$(function () {
-		if ($("#order-chart").length) {
-			var areaData = {
-				labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-				datasets: [{
-						data: [175, 200, 130, 210, 40, 60, 25],
-						backgroundColor: [
-							'rgba(255, 193, 2, .8)'
-						],
-						borderColor: [
-							'transparent'
-						],
-						borderWidth: 3,
-						fill: 'origin',
-						label: "services"
-					},
-					{
-						data: [175, 145, 190, 130, 240, 160, 200],
-						backgroundColor: [
-							'rgba(245, 166, 35, 1)'
-						],
-						borderColor: [
-							'transparent'
-						],
-						borderWidth: 3,
-						fill: 'origin',
-						label: "purchases"
-					}
-				]
-			};
-			var areaOptions = {
-				responsive: true,
-				maintainAspectRatio: true,
-				plugins: {
-					filler: {
-						propagate: false
-					}
-				},
-				scales: {
-					xAxes: [{
-						display: false,
-						ticks: {
-							display: true
-						},
-						gridLines: {
-							display: false,
-							drawBorder: false,
-							color: 'transparent',
-							zeroLineColor: '#eeeeee'
-						}
-					}],
-					yAxes: [{
-						display: false,
-						ticks: {
-							display: true,
-							autoSkip: false,
-							maxRotation: 0,
-							stepSize: 100,
-							min: 0,
-							max: 260
-						},
-						gridLines: {
-							drawBorder: false
-						}
-					}]
-				},
-				legend: {
-					display: false
-				},
-				tooltips: {
-					enabled: true
-				},
-				elements: {
-					line: {
-						tension: .45
-					},
-					point: {
-						radius: 0
-					}
-				}
-			}
-			var salesChartCanvas = $("#order-chart").get(0).getContext("2d");
-			var salesChart = new Chart(salesChartCanvas, {
-				type: 'line',
-				data: areaData,
-				options: areaOptions
-			});
-		}
 
 		if ($("#sales-chart").length) {
 			var SalesChartCanvas = $("#sales-chart").get(0).getContext("2d");
 			var SalesChart = new Chart(SalesChartCanvas, {
 				type: 'bar',
 				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+					labels: ["Jan", "Feb", "Mar", "Apr", "May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
 					datasets: [{
 							label: 'Offline Sales',
 							data: [480, 230, 470, 210, 330],
@@ -159,11 +72,11 @@
 
 		if ($("#north-america-chart").length) {
 			var areaData = {
-				labels: ["Selesai", "Proses", "Tahap Penyelesaian 50 %", "Batal"],
+				labels: ["Selesai", "Proses", "Tahap Penyelesaian 50 %", "Batal", "Order"],
 				datasets: [{
-					data: [50, 50, 50, 50],
+					data: [ 2, 50, 50, 10],
 					backgroundColor: [
-						"greenyellow", "blue", "skyblue", "red"
+						"greenyellow", "blue", "orange", "red", "silver"
 					],
 					borderColor: "rgba(0,0,0,0)"
 				}]
@@ -197,6 +110,9 @@
 					text.push('<p class="mb-0">12097</p>');
 					text.push('</div>');
 					text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[3] + '"></div><p class="mb-0">Batal</p></div>');
+					text.push('<p class="mb-0">12097</p>');
+					text.push('</div>');
+					text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[4] + '"></div><p class="mb-0">Order</p></div>');
 					text.push('<p class="mb-0">12097</p>');
 					text.push('</div>');
 					text.push('</div>');

@@ -15,7 +15,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="<?= base_url('assets/admin/css/style.css'); ?>">
     <!-- endinject -->
-    <link rel="shortcut icon" href="<?= base_url('assets/web/img/azhar.png');?>" />
+    <link rel="shortcut icon" href="<?= base_url('assets/images/profile/azhar.png');?>" />
 </head>
 
 <body>

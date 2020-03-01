@@ -15,9 +15,15 @@ class Produk extends CI_Controller
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
         $data['message'] = $this->Home_model->getMessage();
         $data['message3'] = $this->Home_model->getMessage3();
-        $data['produks'] = $this->Produk_model->getProduk();
 
         $data['title'] = 'Data Produk Buku Tahunan Sekolah';
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            $data['keyword'] = $this->session->userdata('keyword');
+        }
+
 
         $this->form_validation->set_rules('id_katalog', 'Jenis Katalog', 'required');
         $this->form_validation->set_rules('ukuran', 'Ukuran', 'required');
@@ -30,6 +36,24 @@ class Produk extends CI_Controller
         $this->form_validation->set_rules('harga', 'Harga', 'required');
 
         if ($this->form_validation->run() == false) {
+            $config['base_url'] = 'http://localhost/ta/admin/Produk/index';
+            $this->db->like('harga', $data['keyword']);
+            $this->db->or_like('bonus', $data['keyword']);
+            $this->db->or_like('pemesanan', $data['keyword']);
+            $this->db->or_like('dokFile', $data['keyword']);
+            $this->db->or_like('cetakan', $data['keyword']);
+            $this->db->or_like('finishing', $data['keyword']);
+            $this->db->or_like('cover', $data['keyword']);
+            $this->db->or_like('halaman', $data['keyword']);
+            $this->db->or_like('ukuran', $data['keyword']);
+            $this->db->or_like('bahan_kertas', $data['keyword']);
+            $this->db->from('tbl_bahan');
+            $config['total_rows'] = $this->db->count_all_results();
+            $config['per_page'] = 5;
+
+            $this->pagination->initialize($config);
+            $data['start'] = $this->uri->segment(4);
+            $data['produks'] = $this->Produk_model->getProduks($config['per_page'], $data['start'], $data['keyword']);
             $this->load->view('template/Admin/header', $data);
             $this->load->view('template/Admin/navbar', $data);
             $this->load->view('template/Admin/sidebar');

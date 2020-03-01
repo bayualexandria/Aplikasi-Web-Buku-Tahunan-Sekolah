@@ -41,4 +41,10 @@ class Home extends CI_Controller
         $data = $this->Home_model->status();
         echo json_encode($data);
     }
+
+    public function selesai()
+    {
+        $selesai = $this->Home_model->selesai();
+        echo $selesai;
+    }
 }

@@ -6,6 +6,14 @@ class User_model extends CI_Model
     {
         return $this->db->get('users');
     }
+    public function getAlls($limit, $start, $keyword = null)
+    {
+        if ($keyword) {
+            $this->db->like('name', $keyword);
+            $this->db->or_like('email', $keyword);
+        }
+        return $this->db->get('users', $limit, $start);
+    }
 
     public function getById($id)
     {
