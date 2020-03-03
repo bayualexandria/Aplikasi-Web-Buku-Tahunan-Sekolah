@@ -85,6 +85,29 @@ class Pemesanan extends  CI_Controller
         $this->load->view('Template/Admin/footer');
     }
 
+    public function verify($id)
+    {
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $data['one'] = $this->Pemesanan_model->pemesanan($id);
+        $data['message'] = $this->Home_model->getMessage();
+        $data['message3'] = $this->Home_model->getMessage3();
+        $data['title'] = 'Konfirmasi Data Pemesanan';
+        $this->load->view('template/Admin/header', $data);
+        $this->load->view('template/Admin/navbar', $data);
+        $this->load->view('template/Admin/sidebar');
+        $this->load->view('backend/pemesanan/verify', $data);
+        $this->load->view('template/Admin/footer');
+    }
+
+    public function updateKonfirmasi()
+    {
+        $this->db->set('id_status', $this->input->post('id_status'));
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('tbl_pemesanan');
+        $this->session->set_flashdata('success', 'Konfirmasi pembayaran telah berhasil');
+        redirect('admin/pemesanan');
+    }
+
     public function updateStatus($id)
     {
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();

@@ -1,6 +1,6 @@
 <div class="container" style="margin-top: 15rem;">
   <div class="row justify-content-center" style="min-height: 20rem;">
-    <!-- <div class="col-md-3">
+    <div class="col-md-3">
       <div class="text-center mt-5">
         <img src="<?= base_url('assets/images/profile/' . $user['images']); ?>" alt="profile" style="width: 50%;border-radius:50%;border:2px solid silver;">
       </div>
@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <div class="col-md-1"></div>
     <div class="col-md-8">
       <div class="card">
@@ -30,6 +30,9 @@
               <div class="mt-2">
                 <h6 style="font-weight: 900;">Rp <?= $detail['harga']; ?>-, /<?= $detail['halaman']; ?></h6>
                 <h6 style="font-weight: 900;" class="text-info">Bonus : <?= $detail['bonus']; ?></h6>
+              </div>
+              <div style="margin-top: 350px">
+                <a href="<?= base_url('Pemesanan/pembayaran/' . $detail['id']); ?>" class="btn btn-info btn-block">Lanjutkan Ke Pembayaran</a>
               </div>
             </div>
             <div class="col-md-6  border-left">
@@ -75,10 +78,10 @@
                       <h6>Status : <span class="badge badge-<?= $detail['style']; ?> badge-pill"><?= $detail['konfirmasi']; ?></span></h6>
                     </div>
                     <?php if ($detail['konfirmasi'] == 'Order') : ?>
-                    <div class="col-md">
-                    <a href="<?= base_url('pemesanan/batal/' . $detail['id']) ?>" class="btn btn-block btn-danger">Batal Pemesanan</a>
-                    </div>
-                    <?php endif;?>
+                      <div class="col-md">
+                        <a href="<?= base_url('pemesanan/batal/' . $detail['id']) ?>" class="btn btn-block btn-danger hapus">Batal Pemesanan</a>
+                      </div>
+                    <?php endif; ?>
                   </div>
                 </li>
                 <?php if ($detail['konfirmasi'] == 'Order') : ?>

@@ -80,3 +80,37 @@ $("#jumlah, #harga").keyup(function () {
 		$("#total").val(total);
 	}
 });
+
+$lanjut = document.getElementsByClassName('lanjut');
+
+$('.lanjut').on('click', function (e) {
+	e.preventDefault();
+	const href = $(this).attr('href');
+	let timerInterval
+	Swal.fire({
+		title: 'Proses Transfer Pemesanan',
+		html: 'Memproses pemesanan untuk pembayaran anda. Mohon Tungu Sebentar! ',
+		timer: 10000,
+		timerProgressBar: true,
+		onBeforeOpen: () => {
+			Swal.showLoading()
+			timerInterval = setInterval(() => {
+				const content = Swal.getContent()
+				if (content) {
+					const b = content.querySelector('b')
+					if (b) {
+						b.textContent = Swal.getTimerLeft()
+					}
+				}
+			}, 100)
+		},
+		onClose: () => {
+			clearInterval(timerInterval)
+		}
+	}).then((result) => {
+		/* Read more about handling dismissals below */
+		if (result.dismiss === Swal.DismissReason.timer) {
+			document.location.href = href;
+		}
+	})
+});

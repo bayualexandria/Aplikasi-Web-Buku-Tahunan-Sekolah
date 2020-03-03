@@ -82,7 +82,7 @@ class Home_model extends CI_Model
 
     public function getMessage3()
     {
-        $this->db->order_by('date_Send', 'DESC');
+        $this->db->order_by('date_send', 'DESC');
         return $this->db->get('message', 3)->result_array();
     }
     public function getMessage()

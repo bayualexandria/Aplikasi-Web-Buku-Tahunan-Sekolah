@@ -17,6 +17,11 @@ class Pemesanan_model extends  CI_Model
         return $this->db->get('pelanggan', $limit, $start);
     }
 
+    public function pemesanan($id)
+    {
+        return $this->db->get_where('tbl_pemesanan', ['id' => $id])->row_array();
+    }
+
     public function status($id)
     {
         $query = "SELECT `tbl_pemesanan`.*, `pelanggan`.`email_pelanggan` FROM `tbl_pemesanan` JOIN `pelanggan` ON `tbl_pemesanan`.`id_pelanggan`=`pelanggan`.`id` WHERE `tbl_pemesanan`.`id`=$id";
@@ -118,4 +123,6 @@ class Pemesanan_model extends  CI_Model
     {
         return $this->db->delete('tbl_pemesanan', ['id' => $id]);
     }
+
+   
 }

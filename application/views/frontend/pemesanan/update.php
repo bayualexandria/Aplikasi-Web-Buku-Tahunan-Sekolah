@@ -64,7 +64,7 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <?php if (form_error('jumlah_katalog') == 0) : ?>
-                                                        <input class="form-control" name="jumlah_katalog" type="number" min="1" max="12" step="1" value="<?= $produck['jumlah_katalog']; ?>" id="jumlah">
+                                                        <input class="form-control" name="jumlah_katalog" type="number" min="1" max="10000" step="1" value="<?= $produck['jumlah_katalog']; ?>" id="jumlah">
                                                     <?php endif; ?>
                                                 </div>
                                                 <div class="col-md-1"></div>

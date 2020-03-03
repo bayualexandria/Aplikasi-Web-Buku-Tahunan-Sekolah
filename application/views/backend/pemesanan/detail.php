@@ -54,6 +54,9 @@
                                             <li class="list-group-item">Finishing : <?= $a['finishing']; ?></li>
                                             <li class="list-group-item">Cetakan : <?= $a['cetakan']; ?></li>
                                             <li class="list-group-item">Dok. File : <?= $a['dokFile']; ?></li>
+                                            <?php if (!$a['images'] == null) : ?>
+                                                <li class="list-group-item"><a href="<?= base_url('admin/Pemesanan/verify/' . $a['id']); ?>" class="btn btn-warning btn-sm btn-block">Konfirmasi Pembayaran</a></li>
+                                            <?php endif; ?>
                                         </ul>
                                         <div class="card-body">
                                             <div class="float-left mt-0">
